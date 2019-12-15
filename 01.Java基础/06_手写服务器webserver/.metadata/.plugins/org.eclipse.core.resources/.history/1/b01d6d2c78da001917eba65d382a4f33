@@ -1,0 +1,50 @@
+package com.liu.server;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.Socket;
+
+/**
+ * 请求信息
+ * @author liujy
+ *
+ */
+public class Request {
+	
+	private final String BLANK = " ";
+	private final String CRLF = "\r\n";
+	
+	public Request(Socket client) throws IOException {
+		this(client.getInputStream());
+	}
+	
+	public Request(InputStream is) {
+		byte[] flush = new byte[1024*1024];
+		String reqInfo = "";
+		try {
+			reqInfo = new String(flush,0,is.read(flush));
+			System.out.println(reqInfo);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		// 解析字符串
+		parseReqInfo(reqInfo);
+	}
+	
+	/** 解析字符串 */
+	private void parseReqInfo(String reqInfo) {
+		String reqMethod = reqInfo.substring(0, reqInfo.indexOf("/")).toLowerCase().trim();
+		String reqUrl = "";
+		String reqParas = "";
+		if (reqMethod.equals("get")) {
+			reqUrl = reqInfo.substring(reqInfo.indexOf("/")+1, reqInfo.indexOf("?")).trim();
+			reqParas = reqInfo.substring(reqInfo.indexOf("?")+1, reqInfo.indexOf("HTTP/")).trim();
+		}else if (reqMethod.equals("post")) {
+			reqUrl = reqInfo.substring(reqInfo.indexOf("/")+1, reqInfo.indexOf("HTTP/")).trim();
+			reqParas = reqInfo.substring(reqInfo.indexOf(CRLF)).trim();
+		}
+		System.out.println(reqParas);
+	}
+
+}

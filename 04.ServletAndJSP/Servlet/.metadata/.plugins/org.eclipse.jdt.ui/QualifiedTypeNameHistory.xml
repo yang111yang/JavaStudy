@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="com.liu.service.LoginServiceImpl"/>
+    <fullyQualifiedTypeName name="com.liu.dao.impl.LoginDaoImpl"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="com.liu.service.LoginService"/>
+    <fullyQualifiedTypeName name="java.io.FileReader"/>
+    <fullyQualifiedTypeName name="com.liu.sorm.utils.JavaFileUtils"/>
+    <fullyQualifiedTypeName name="com.liu.sorm.bean.TableInfo"/>
+    <fullyQualifiedTypeName name="com.liu.sorm.core.TableContext"/>
+    <fullyQualifiedTypeName name="com.liu.sorm.core.MysqlTypeConvertor"/>
+    <fullyQualifiedTypeName name="com.liu.utils.JDBCUtils"/>
+    <fullyQualifiedTypeName name="javax.ws.rs.core.Cookie"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.Cookie"/>
+    <fullyQualifiedTypeName name="com.liu.service.impl.LoginServiceImpl"/>
+    <fullyQualifiedTypeName name="com.liu.bean.User"/>
+    <fullyQualifiedTypeName name="java.io.FileWriter"/>
+    <fullyQualifiedTypeName name="java.io.BufferedWriter"/>
+    <fullyQualifiedTypeName name="java.io.BufferedReader"/>
+    <fullyQualifiedTypeName name="com.manager.dao.UserDao"/>
+    <fullyQualifiedTypeName name="com.manager.dao.impl.UserDaoImpl"/>
+    <fullyQualifiedTypeName name="com.manager.service.impl.UserServiceImpl"/>
+    <fullyQualifiedTypeName name="org.apache.log4j.Logger"/>
+    <fullyQualifiedTypeName name="java.sql.Connection"/>
+    <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+    <fullyQualifiedTypeName name="com.mysql.cj.protocol.Resultset"/>
+    <fullyQualifiedTypeName name="java.sql.ResultSet"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="java.sql.DriverManager"/>
+    <fullyQualifiedTypeName name="com.manager.pojo.User"/>
+    <fullyQualifiedTypeName name="java.sql.Timestamp"/>
+    <fullyQualifiedTypeName name="java.sql.Date"/>
+    <fullyQualifiedTypeName name="com.liu.pojo.User"/>
+    <fullyQualifiedTypeName name="com.liu.pojo.Address"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="java.io.InputStream"/>
+    <fullyQualifiedTypeName name="com.liujy.thread.MyRunnable"/>
+    <fullyQualifiedTypeName name="javax.servlet.Filter"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpServletResponse"/>
+    <fullyQualifiedTypeName name="javax.servlet.ServletRequestListener"/>
+    <fullyQualifiedTypeName name="javax.servlet.ServletRequestAttributeListener"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpSessionListener"/>
+    <fullyQualifiedTypeName name="javax.servlet.ServletContextListener"/>
+</qualifiedTypeNameHistroy>

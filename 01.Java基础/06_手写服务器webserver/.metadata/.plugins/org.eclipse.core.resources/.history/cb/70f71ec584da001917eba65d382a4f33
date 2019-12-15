@@ -1,0 +1,79 @@
+package com.liu.server;
+
+import java.io.IOException;
+import java.io.OutputStream;
+import java.net.Socket;
+import java.util.Date;
+
+/**
+ * 响应信息
+ * @author liujy
+ *
+ */
+public class Response {
+	
+	private StringBuilder resInfo;
+	private StringBuilder content;
+	private final String BLANK = " ";
+	private final String CRLF = "\r\n";
+	private OutputStream os;
+	private int len;
+	
+	public Response(Socket client) throws IOException {
+		this(client.getOutputStream());
+	}
+	
+	public Response(OutputStream os) {
+		this.os = os;
+	}
+	
+	/** 添加内容 */
+	public Response print(String info) {
+		content.append(info);
+		len += info.getBytes().length;
+		return this;
+	}
+	
+	/** 添加带换行的内容 */
+	public Response println(String info) {
+		content.append(info).append(CRLF);
+		len += (info+CRLF).getBytes().length;
+		return this;
+	}
+	
+	private void createResInfo(int code) {
+		String status = "";
+		switch (code) {
+		case 200:
+			status = "OK";
+			break;
+		case 404:
+			status = "NOT FOUND";
+			break;
+		case 500:
+			status = "SERVER ERROR";
+			break;
+
+		default:
+			break;
+		}
+		resInfo.append("HTTP/1.1").append(BLANK).append(200).append(BLANK).append("OK").append(CRLF);
+		resInfo.append("Date:").append(new Date()).append(CRLF);
+		resInfo.append("Server:shsxt Server/0.0.1;charset=GBK").append(CRLF);
+		resInfo.append("Content-type:text/html").append(CRLF);
+		resInfo.append("Content-length:").append(len).append(CRLF);
+		resInfo.append(CRLF);
+	}
+	
+	public void pushToBrowser(int code) {
+		createResInfo();
+		resInfo.append(content);
+		try {
+			os.write(resInfo.toString().getBytes());
+			os.flush();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+}

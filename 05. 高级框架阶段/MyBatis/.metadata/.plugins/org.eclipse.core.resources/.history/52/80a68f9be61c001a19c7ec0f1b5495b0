@@ -1,0 +1,11 @@
+package com.liu.mapper;
+
+import java.util.List;
+
+import com.liu.pojo.People;
+
+public interface PeopleMapper {
+	
+	List<People> selAll();
+	List<People> selByNameAge();
+}

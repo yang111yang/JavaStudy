@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liu.mapper.PeopleMapper">
+	<select id="selAll" resultType="people">
+		select * from people
+	</select>
+	<!-- <select id="selByNameAge" resultType="people" parameterType="people">
+		select * from people where name=#{0} and age=#{1}
+	</select> -->
+	<!-- 动态Sql -->
+	<!-- <select id="selByNameAge" resultType="people" parameterType="people">
+		select * from people where 1=1
+		<if test="name != null and name != ''">
+			and name=#{name}
+		</if>
+		<if test="age != null and age != ''">
+			and age=#{age}
+		</if>
+	</select> -->
+	<!-- <select id="selByNameAge" resultType="people" parameterType="people">
+		select * from people 
+		<where>
+			<if test="name != null and name != ''">
+				and name=#{name}
+			</if>
+			<if test="age != null and age != ''">
+				and age=#{age}
+			</if>
+		</where>
+	</select> -->
+	<!-- <select id="selByNameAge" resultType="people" parameterType="people">
+		select * from people 
+		<where>
+			<choose>
+				<when test="name != null and name != ''">
+					and name=#{name}
+				</when>
+				<when test="age != null and age != ''">
+					and age=#{age}
+				</when>
+			</choose>
+		</where>
+	</select> -->
+	
+	<update id="ups" parameterType="people">
+		update people
+		<set>
+			id=#{id},
+			<if test="name != null and name != ''">
+				name=#{name},
+			</if>
+			<if test="age != null and age != ''">
+				age=#{age},
+			</if>
+		</set>
+		where id=#{id}
+	</update>
+	
+	<!-- <select id="selByNameAge" resultType="people" parameterType="people">
+		select * from people 
+		<trim prefix="abc" prefixOverrides="and" suffix="cda" suffixOverrides=",">
+			<if test="name != null and name != ''">
+				and name=#{name}
+			</if>
+			<if test="age != null and age != ''">
+				and age=#{age},
+			</if>
+		</trim>
+	</select> -->
+	
+	<select id="selByNameAge" resultType="people" parameterType="people">
+		<bind name="name" value="'%'+name+'%'"/>
+		select * from people where name like #{name}
+	</select>
+</mapper>

@@ -1,0 +1,107 @@
+package com.liu.server;
+
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStreamWriter;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.Date;
+
+/**
+ * 实现响应内容的返回
+ * @author liujy
+ *
+ */
+public class Server02 {
+	
+	private ServerSocket serverSocket = null;
+	
+	public static void main(String[] args) {
+		Server02 server = new Server02();
+		server.start();
+	}
+	// 启动服务
+	public void start() {
+		try {
+			serverSocket = new ServerSocket(8888);
+			receive();
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.out.println("服务器启动失败");
+		}
+	}
+	// 获取信息
+	public void receive() {
+		try {
+			Socket client = serverSocket.accept();
+			System.out.println("一个客户端建立了连接");
+			InputStream is = client.getInputStream();
+			byte[] datas = new byte[1024*1024];
+			int len = is.read(datas);
+			String msg = new String(datas,0,len);
+			System.out.println(msg);
+			
+			send(client);
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.out.println("客户端错误");
+		}
+	}
+	
+	// 返回响应内容
+	public void send(Socket client) {
+		StringBuilder content = new StringBuilder();
+		content.append("<html>");
+		content.append("<head>");
+		content.append("<title>");
+		content.append("服务器响应");
+		content.append("</title>");
+		content.append("</head>");
+		content.append("<body>");
+		content.append("响应内容回来了");
+		content.append("</body>");
+		content.append("</html>");
+		int len = content.toString().getBytes().length; // 获取内容的字节数长度
+		
+		StringBuilder responseInfo = new StringBuilder();
+		/*
+		 * 状态行：HTTP/1.1 200 OK
+		 * 2、请求头:
+			Date:Mon,31Dec209904:25:57GMT
+			Server:shsxt Server/0.0.1;charset=GBK
+			Content-type:text/html
+			Content-length:39725426
+			3、请求正文
+		 */
+		String blank = " ";
+		String HHF = "\r\n";
+		responseInfo.append("HTTP/1.1").append(blank).append(200).append(blank).append("OK").append(HHF);
+		responseInfo.append("Date:").append(new Date()).append(HHF);
+		responseInfo.append("Server:").append("shsxt Server/0.0.1;charset=GBK").append(HHF);
+		responseInfo.append("Content-type:text/html").append(HHF);
+		responseInfo.append("Content-length:").append(len).append(HHF);
+		responseInfo.append(HHF);
+		responseInfo.append(content);
+		
+		try {
+			BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(client.getOutputStream()));
+			bw.write(responseInfo.toString());
+			bw.flush();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+		
+	// 停止服务
+	public void stop() {
+		try {
+			serverSocket.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.out.println("服务器停止失败");
+		}
+	}
+	
+}

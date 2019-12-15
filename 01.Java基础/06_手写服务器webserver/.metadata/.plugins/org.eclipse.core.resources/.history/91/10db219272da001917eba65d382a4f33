@@ -1,0 +1,82 @@
+package com.liu.server;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.Date;
+
+/**
+ * 服务器
+ * @author liujy
+ *
+ */
+public class Server {
+	
+	private ServerSocket serverSocket;
+	private String reqInfo;
+	private StringBuilder resInfo;
+	private final String BLANK = " ";
+	private final String CRLF = "\r\n";
+	
+	public static void main(String[] args) {
+		Server server = new Server();
+		server.start();
+	}
+	
+	/** 启动服务 */
+	public void start() {
+		try {
+			serverSocket = new ServerSocket(8889);
+			recevieAndSend();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/** 处理信息 */
+	public void recevieAndSend() {
+		try {
+			Socket client = serverSocket.accept();
+			System.out.println("一个客户端建立了连接");
+			// 接收信息
+			InputStream is = client.getInputStream();
+			byte[] flush = new byte[1024*1024];
+			reqInfo = new String(flush,0,is.read(flush));
+			System.out.println(reqInfo);
+			// 发送信息
+			OutputStream os = client.getOutputStream();
+			/*
+			 * 1、状态行:HTTP/1.1 200 OK 
+			 * 2、请求头:
+			 * 		Date:Mon,31Dec209904:25:57GMT 
+			 * 		Server:shsxt Server/0.0.1;charset=GBK 
+			 * 		Content-type:text/html 
+			 * 		Content-length:39725426
+			 * 3、请求正文
+			 */
+			String content = "欢迎回来";
+			resInfo.append("HTTP/1.1").append(BLANK).append(200).append(BLANK).append("OK").append(CRLF);
+			resInfo.append("Date:").append(new Date()).append(CRLF);
+			resInfo.append("Server:shsxt Server/0.0.1;charset=GBK").append(CRLF);
+			resInfo.append("Content-type:text/html").append(CRLF);
+			resInfo.append("Content-length:").append(content.getBytes().length).append(CRLF);
+			resInfo.append(content);
+			os.write(resInfo.toString().getBytes());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+	
+	/** 停止服务 */
+	public void stop() {
+		try {
+			serverSocket.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+}

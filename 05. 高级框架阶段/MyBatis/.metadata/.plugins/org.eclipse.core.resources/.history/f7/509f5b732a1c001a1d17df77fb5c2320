@@ -1,0 +1,14 @@
+package com.liu.service.impl;
+
+import com.liu.pojo.PageInfo;
+import com.liu.service.PeopleService;
+
+public class PeopleServiceImpl implements PeopleService {
+
+	@Override
+	public PageInfo showPage(int pageSize, int pageNumber) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

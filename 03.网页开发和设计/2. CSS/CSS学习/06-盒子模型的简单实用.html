@@ -1,0 +1,53 @@
+<html>
+	<head>
+		<title>盒子模型的简单使用</title>
+		<meta charset="UTF-8"/>
+		<style type="text/css">
+			div{
+				width: 300px;
+				height: 200px;
+			}
+			#header,#footer{
+				width: 650px;
+				margin: 0px auto;
+				margin-top: 20px;
+			}
+			#div01{
+				border: solid 1px red;
+				float: left;
+				margin-right: 20px;
+			}
+			#div02{
+				border: solid 1px orange;
+				float: left;
+			}
+			#div03{
+				border: solid 1px blueviolet;
+				float: left;
+				margin-right: 20px;
+			}
+			#div04{
+				border: solid 1px blue;
+				float: left;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="header">
+			<div id="div01">
+				我是div01
+			</div>
+			<div id="div02">
+				我是div02
+			</div>
+		</div>
+		<div id="footer">
+			<div id="div03">
+				我是div03
+			</div>
+			<div id="div04">
+				我是div04
+			</div>
+		</div>
+	</body>
+</html>

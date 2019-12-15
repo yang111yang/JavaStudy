@@ -1,0 +1,46 @@
+package com.liu.po;
+
+import java.sql.*;
+import java.util.*;
+
+public class Dept {
+
+	private String address;
+	private Integer id;
+	private String deptname;
+
+	public Dept() {
+	}
+
+	public Dept(String address, Integer id, String deptname) {
+		super();
+		this.address=address;
+		this.id=id;
+		this.deptname=deptname;
+	}
+
+	public String getAddress(){
+		return address;
+	}
+
+	public Integer getId(){
+		return id;
+	}
+
+	public String getDeptname(){
+		return deptname;
+	}
+
+	public void setAddress(String address){
+		this.address=address;
+	}
+
+	public void setId(Integer id){
+		this.id=id;
+	}
+
+	public void setDeptname(String deptname){
+		this.deptname=deptname;
+	}
+
+}

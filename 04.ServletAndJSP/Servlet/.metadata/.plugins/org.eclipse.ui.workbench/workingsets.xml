@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workingSetManager>
+<workingSet editPageId="org.eclipse.jdt.internal.ui.DynamicSourcesWorkingSet" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1572875266395_1" label="Java Main Sources" name="Java Main Sources">
+<item elementID="=01-MyServlet/src" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=05-Session/src" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=09-Manager/src" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=14-Filter/src" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=15-Listener/src" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=Test/src" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+</workingSet>
+<workingSet editPageId="org.eclipse.jdt.internal.ui.DynamicSourcesWorkingSet" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1572875266402_2" label="Java Test Sources" name="Java Test Sources"/>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1574731212815_4" label="Java基础（01-Basic）" name="Java基础（01-Basic）">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/MyPro01" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/MyPro02" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/MyPro03" type="4"/>
+</workingSet>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1574731262274_5" label="Servlet和JSP" name="Servlet和JSP">
+<item elementID="=01-MyServlet" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/08-Jsp" type="4"/>
+<item elementID="=09-Manager" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/11-JSTL" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/12-Manager" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/10-EL" type="4"/>
+<item elementID="=05-Session" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/03-LoginDemo" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/04-Cookie" type="4"/>
+<item elementID="=15-Listener" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/03-Login" type="4"/>
+<item elementID="=14-Filter" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/06-ServletContext" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/02-MyServlet" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/13-Ajax" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/07-ServletConfig" type="4"/>
+</workingSet>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1574731304648_7" label="Java基础（02-Collections）" name="Java基础（02-Collections）">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/容器" type="4"/>
+</workingSet>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1574731352129_9" label="Java基础（03-IO）" name="Java基础（03-IO）">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/CommonsIOTest" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/IO流" type="4"/>
+</workingSet>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1574731379331_10" label="Java基础（04-多线程）" name="Java基础（04-多线程）">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/Thread01" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/Thread02" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/Thread03" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/Thread04" type="4"/>
+</workingSet>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1574731402329_11" label="Java基础（05-网络编程）" name="Java基础（05-网络编程）">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/Net" type="4"/>
+</workingSet>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1574731429664_12" label="Java基础（06-手写服务器webserver）" name="Java基础（06-手写服务器webserver）">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/Server_study01" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/Server_study02" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/Server_study03" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/Server_study04" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/MyServer" type="4"/>
+</workingSet>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1574731457863_13" label="Java基础（07-注解_反射_字节码_类加载机制）" name="Java基础（07-注解_反射_字节码_类加载机制）">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/TestDynamicComplie" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/TestNashorn" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/TestAnnotations" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/TestJAVAssist" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/TestReflection" type="4"/>
+</workingSet>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1574731489090_14" label="Java基础（08-JDBC数据库操作）" name="Java基础（08-JDBC数据库操作）">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/测试JDBC" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/TestORM" type="4"/>
+</workingSet>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1574731525731_15" label="Java基础（09-手写ORM框架）" name="Java基础（09-手写ORM框架）">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/SORM" type="4"/>
+</workingSet>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1574739753495_27" label="测试" name="测试">
+<item elementID="=Test" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+</workingSet>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1572590159903_0" label="Window Working Set" name="Aggregate for window 1572590159903"/>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1572875902794_3" label="Window Working Set" name="Aggregate for window 1572875902794"/>
+</workingSetManager>

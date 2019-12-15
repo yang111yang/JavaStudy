@@ -1,0 +1,32 @@
+package com.liu.test;
+
+import java.io.IOException;
+import java.io.InputStream;
+
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.apache.log4j.Logger;
+
+import com.liu.pojo.People;
+
+public class Test {
+	public static void main(String[] args) throws IOException {
+//		Logger logger = Logger.getLogger(Test.class);
+//		logger.debug("这是一个调试信息");
+//		logger.info("这是一个输出信息");
+		InputStream is = Resources.getResourceAsStream("mybatis.xml");
+		SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(is);
+		SqlSession session = factory.openSession();
+//		session.selectList("com.liu.mapper.PeopleMapper.selAll");
+		
+		//测试mybatis参数的使用
+		People peo = new People();
+		peo.setId(2);
+		People people = session.selectOne("com.liu.mapper.PeopleMapper.selById",peo);
+		System.out.println(people);
+		
+		session.close();
+	}
+}

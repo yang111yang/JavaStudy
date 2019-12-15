@@ -1,0 +1,34 @@
+package com.liu.server;
+
+import java.net.Socket;
+
+/**
+ * 分发器
+ * @author liujy
+ *
+ */
+public class Dispatcher implements Runnable {
+	
+	private Socket client;
+	private Request request;
+	private Response response;
+	
+	public Dispatcher(Socket client) {
+		this.client = client;
+		request = new Request(client);
+		response = new Response(client);
+	}
+
+	@Override
+	public void run() {
+		Servlet servlet = WebApp.getServletFromUrl(request.getRequestUrl());
+		if (servlet != null) {
+			servlet.service(request, response);
+			response.push(200);
+		} else {
+			response.push(404);
+		}
+
+	}
+
+}

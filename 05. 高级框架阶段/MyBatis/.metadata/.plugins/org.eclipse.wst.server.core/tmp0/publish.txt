@@ -1,0 +1,4 @@
+#Tomcat publish data
+#Sun Dec 15 19:11:15 CST 2019
+org.eclipse.jst.jee.server\:/binary\:E\:\\LiujyStudy\\JavaStudy\\05.\ \u9AD8\u7EA7\u6846\u67B6\u9636\u6BB5\\MyBatis\\student\\WebContent\\WEB-INF\\lib\\log4j-core-2.0-rc1.jar=WEB-INF/lib/log4j-core-2.0-rc1.jar
+org.eclipse.jst.jee.server\:/binary\:E\:\\LiujyStudy\\JavaStudy\\05.\ \u9AD8\u7EA7\u6846\u67B6\u9636\u6BB5\\MyBatis\\openSessionInView\\WebContent\\WEB-INF\\lib\\log4j-core-2.0-rc1.jar=WEB-INF/lib/log4j-core-2.0-rc1.jar

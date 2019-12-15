@@ -1,0 +1,79 @@
+package com.liujy.syn;
+/**
+ * 死锁：过多的同步会造成死锁，某一个同步块同时拥有两个以上的对象锁
+ * 
+ * 解决：不要锁套锁
+ * @author 刘建阳
+ *
+ */
+public class DeadLock {
+
+	public static void main(String[] args) {
+		new MakeUp(0, "巩俐").start();
+		new MakeUp(1, "赵丽颖").start();
+	}
+
+}
+
+// 口红
+class Lipstick{
+	
+}
+
+// 镜子
+class Mirror{
+	
+}
+
+// 化妆
+class MakeUp extends Thread{
+	static Lipstick lipstick =  new Lipstick();
+	static Mirror mirror = new Mirror();
+	int choice; // 0:口红	1：镜子
+	String girl; // 姓名
+	
+	public MakeUp(int choice, String girl) {
+		this.choice = choice;
+		this.girl = girl;
+	}
+	
+	@Override
+	public void run() {
+		makeUp();
+	}
+	
+	private void makeUp() {
+		if (choice == 0) {
+			synchronized (lipstick) {
+				System.out.println(girl + "涂口红");
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				
+				/*
+				 * 一个对象同时持有两个对象锁，发生死锁
+				 * synchronized (mirror) { System.out.println(girl + "照镜子"); }
+				 */
+			}
+			synchronized (mirror) { System.out.println(girl + "照镜子"); }
+		} else {
+			synchronized (mirror) {
+				System.out.println(girl + "照镜子");
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				
+				/*
+				 * 一个对象同时持有两个对象锁，发生死锁
+				 * synchronized (lipstick) { System.out.println(girl + "涂口红"); }
+				 */
+			}
+			synchronized (lipstick) { System.out.println(girl + "涂口红"); }
+		}
+	}
+	
+}

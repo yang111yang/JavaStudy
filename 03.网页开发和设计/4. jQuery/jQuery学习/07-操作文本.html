@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>操作文本</title>
+		<script src="js/jQuery-1.8.3.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			function func1(){
+//				var val = $("#div1").html();
+//				alert(val);
+//				$("#div2").html(val);
+				
+				var txt = $("#div1").text();
+				alert(txt);
+				$("#div2").text(txt);
+			}
+			function func2(){
+				var val = $("#username").val();
+				$("#username").val(val+"123");
+			}
+		</script>
+	</head>
+	<body>
+		<div id="div1" style="border:1px solid red; background-color: aqua;">
+			<h3>测试操作文本</h3>
+		</div>
+		<div id="div2" style="border:1px solid red;background-color:bisque;">
+			1
+		</div>		
+		<input id="username" type="text" value="zhangsan" /><br>
+		<input type="button" value="func1" onclick="func1()" />
+		<input type="button" value="func2" onclick="func2()" />
+	</body>
+</html>

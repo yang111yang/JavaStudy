@@ -1,0 +1,130 @@
+package com.liujy.mycollection;
+/**
+ * 	自定义HashMap
+ * 	重写toString方法
+ * @author 刘建阳
+ *
+ * @param <K>
+ * @param <V>
+ */
+public class MyHashMap02<K,V> {
+	
+	Node2<K,V>[] table;
+	int size;
+	
+	@SuppressWarnings("unchecked")
+	public MyHashMap02() {
+		table = new Node2[16];
+	}
+
+	public void remove(K k) {
+		int hash = getMyHash(k, table.length);
+		Node2<K,V> temp = table[hash];
+		while(temp != null) {
+			if (temp.k.equals(k)&&temp.next == null) { // 删除数组中只有一个元素的链表中的元素
+				table[temp.hash] = null;
+				temp = null;
+			} else {
+				if (temp.k.equals(k) && temp.next.next == null) {
+					temp= temp.next;
+				} else if (temp.next.k.equals(k) && temp.next.next == null) {
+					temp.next = null;
+				} else if (temp.next.k.equals(k) && temp.next.next != null) {
+					temp.next = temp.next.next;
+				}
+				
+			}
+		}
+		size--;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public V get(K k) {
+		int hash = getMyHash(k, table.length);
+		Node2<K,V> temp = table[hash];
+		Object v = null;
+		while(temp != null) {
+			if (temp.k.equals(k)) {
+				v = temp.v;
+				break;
+			} else {
+				temp = temp.next;
+			}
+		}
+		return (V)v;
+	}
+	
+	public void put(K k, V v) {
+		Node2<K, V> newNode = new Node2<>();
+		newNode.k = k;
+		newNode.v = v;
+		newNode.hash = getMyHash(k,table.length);
+		newNode.next = null;
+		
+		Node2<K, V> temp = table[newNode.hash];
+		Node2<K, V> iterLast = null;
+		boolean keyRepeat = false; // 默认不重复
+		if (table[newNode.hash] == null) { 
+			// 如果数组元素为空，直接将节点放进去
+			table[newNode.hash] = newNode;
+			size++;
+		} else {
+			// 如果数组元素不为空，则遍历链表
+			while (temp != null) {
+				if (temp.k.equals(k)) { // 如果key重复，则覆盖value
+					temp.v = v;
+					keyRepeat = true;
+					break;
+				} else { // 如果没有重复，加到末尾
+					iterLast = temp;
+					temp = temp.next;
+				}
+					
+			}
+			
+			if (!keyRepeat) { // 如果不重复
+				iterLast.next = newNode;
+				size++;
+			}
+		}
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder("{");
+		// 遍历位桶数组
+		for (int i = 0; i < table.length; i++) {
+			// 遍历链表
+			Node2<K,V> temp = table[i];
+			while(temp != null) {
+				sb.append(temp.k + ":" + temp.v + ",");
+				temp = temp.next;
+			}
+		}
+		sb.setCharAt(sb.length() - 1, '}');
+		return sb.toString();
+	}
+
+	private static int getMyHash(Object k,int length) {
+		return k.hashCode() & (length - 1);
+	}
+	
+	
+	public static void main(String[] args) {
+		MyHashMap02<Integer, String> map = new MyHashMap02<>();
+		map.put(10, "aa");
+		map.put(20, "bb");
+		map.put(30, "cc");
+		map.put(53, "gg");
+		map.put(69, "ff");
+		map.put(85, "hh");
+		
+		System.out.println(map);
+		System.out.println(map.get(10));
+		
+		map.remove(10);
+		System.out.println(map);
+		
+	}
+
+}

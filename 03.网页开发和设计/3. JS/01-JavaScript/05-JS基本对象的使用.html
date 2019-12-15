@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>基本对象</title>
+		<script type="text/javascript">
+			document.write("<h3>String对象</h3>");
+			document.write("<hr />");
+//			var str = "wabjtam123";
+			var str = new String("wabjtam123");
+			document.write(str+"<br />");
+			document.write(str.charAt(2)+"<br />");
+			document.write(str.indexOf("b")+"<br />");
+			document.write(str.substr(2,5)+"<br />");
+			document.write(str.substring(2,5)+"<br />");
+			
+			document.write("<h3>Math对象</h3>");
+			document.write("<hr />");
+			document.write(Math.PI+"<br />");
+			document.write(Math.random()+"<br />");
+			
+			document.write("<h3>Date对象</h3>");
+			document.write("<hr />");
+			var date = new Date();
+			document.write(date.toString()+"<br />");
+			document.write(date.toLocaleDateString()+"<br />");
+			var year = date.getFullYear();
+			var month = date.getMonth()+1;
+			var weekDay = date.getDay();
+			var day = date.getDate();
+			var arr = ["星期日","星期一","星期二","星期三","星期四","星期五","星期六"]
+			var hour = date.getHours();
+			var min = date.getMinutes();
+			var sec = date.getSeconds();
+			document.write(year+"年"+month+"月"+day+"日"+" "+arr[weekDay]+" "+hour+":"+min+":"+sec+"<br />");
+		</script>
+	</head>
+	<body>
+	
+	</body>
+</html>

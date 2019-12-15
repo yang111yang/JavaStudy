@@ -1,0 +1,9 @@
+package com.liu.server.core;
+
+import com.liu.server.core.Request;
+import com.liu.server.core.Response;
+
+public interface Servlet {
+
+	void service(Request request, Response response);
+}

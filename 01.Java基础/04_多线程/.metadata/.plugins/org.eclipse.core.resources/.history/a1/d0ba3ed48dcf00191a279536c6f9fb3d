@@ -1,0 +1,25 @@
+package com.liujy.other;
+
+import java.util.Timer;
+import java.util.TimerTask;
+
+/**
+ * 任务定时调度：Timer和TimerTask
+ * @author 刘建阳
+ *
+ */
+public class TimerTest01 {
+	public static void main(String[] args) {
+		Timer timer = new Timer();
+//		timer.schedule(new MyTask(), 1000); // 1秒钟后执行
+		timer.schedule(new MyTask(), 1000, 2000); 
+	}
+}
+
+class MyTask extends TimerTask {
+
+	public void run() {
+		System.out.println("放空大脑，休息一下");
+	}
+	
+}

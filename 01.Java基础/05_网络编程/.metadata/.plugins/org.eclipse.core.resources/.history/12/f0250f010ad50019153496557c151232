@@ -1,0 +1,36 @@
+package com.net.chat;
+
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+/**
+ * @version:1.0
+ * @Description:聊天室：服务端
+ * @author:刘建阳
+ * @date:2019年9月9日下午8:04:46
+ */
+public class Chat {
+
+	public static void main(String[] args) throws Exception {
+		// 1、指定端口 使用ServerSocket创建服务器
+		ServerSocket server = new ServerSocket(8888);
+		System.out.println("一个客户端建立了连接。。。。");
+		// 2、阻塞式等待连接 accept
+		Socket client = server.accept();
+		// 3、操作: 输入输出流操作
+		// 接收消息
+		DataInputStream dis = new DataInputStream(client.getInputStream());
+		String msg = dis.readUTF();
+		DataOutputStream dos = new DataOutputStream(client.getOutputStream());
+		dos.writeUTF(msg);
+		dos.flush();
+		// 4、释放资源 
+		dos.close();
+		dis.close();
+		client.close();
+		
+		server.close();
+	}
+}

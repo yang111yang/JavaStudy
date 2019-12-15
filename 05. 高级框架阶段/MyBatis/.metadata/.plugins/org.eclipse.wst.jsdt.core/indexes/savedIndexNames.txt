@@ -1,0 +1,12 @@
+INDEX VERSION 1.4+E:\LiujyStudy\JavaStudy\05. ¸ß¼¶¿ò¼Ü½×¶Î\MyBatis\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+2657213830.index
+2893691962.index
+2190218428.index
+3038028621.index
+2515992831.index
+1863072964.index
+244301035.index
+778837593.index
+1306806701.index
+3888188070.index
+3771569976.index

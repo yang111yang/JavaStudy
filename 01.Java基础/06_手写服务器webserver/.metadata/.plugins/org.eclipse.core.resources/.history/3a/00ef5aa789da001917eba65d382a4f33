@@ -1,0 +1,41 @@
+package com.liu.server;
+
+import java.io.IOException;
+import java.net.Socket;
+
+import com.liu.user.LoginServlet;
+import com.liu.user.RegistServlet;
+import com.liu.user.Servlet;
+
+public class Dispatcher implements Runnable {
+	
+	private Request request;
+	private Response response;
+
+	public Dispatcher(Socket client) {
+		try {
+			request = new Request(client);
+			response = new Response(client);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void run() {
+		try {
+			Servlet servlet = null;
+			if (request.getReqUrl().equals("login")) {
+				servlet = new LoginServlet();
+			} else if (request.getReqUrl().equals("reg")) {
+				servlet = new RegistServlet();
+			}
+			servlet.service(request, response);
+			response.pushToBrowser(200);
+		} catch(Exception e) {
+			
+		}
+
+	}
+
+}

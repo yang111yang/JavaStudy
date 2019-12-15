@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liu.mapper.PeopleMapper">
+	<select id="selAll" resultType="com.liu.pojo.People">
+		select * from people
+	</select>
+	<select id="selById" resultType="com.liu.pojo.People" parameterType="com.liu.pojo.People">
+		select * from people where id=${id}
+	</select>
+	<select id="selPage" resultType="com.liu.pojo.People" parameterType="Map">
+		select * from people limit #{pageStart} #{pageSize}
+	</select>
+</mapper>

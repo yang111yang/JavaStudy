@@ -1,0 +1,5 @@
+package com.liu.annotation;
+
+public @interface Table {
+
+}

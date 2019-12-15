@@ -1,0 +1,75 @@
+<html>
+	<head>
+		<title>登录</title>
+		<meta charset="UTF-8"/>
+		<link rel="stylesheet" type="text/css" href="themes/default/easyui.css"/>
+		<link rel="stylesheet" type="text/css" href="themes/icon.css"/>
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/jquery.easyui.min.js"></script>
+		<!--引入jquery.easyui.min.js之前一定要先引入jquery.min.js，否则的话easyui的样式不能使用-->
+		<style type="text/css">
+			#panel_login{
+				margin: auto;
+				width: 500px;
+				margin-top: 100px;
+			}
+			table{
+				margin: auto;
+			}
+			tr{
+				height: 40px;
+				text-align: center;
+			}
+		</style>
+		<script type="text/javascript">
+			$(function(){
+				$("#btnCon").click(function(){
+					if ($(":text").val() == "") {
+						//使用easyUI弹出消息提示框
+						$.messager.alert("登录提示","用户名为空","warning");
+					} else if($(":password").val() == ""){
+						//使用easyUI弹出消息提示框
+						$.messager.alert("登录提示","密码为空","warning");
+					} else {
+						$("form").submit();
+					}
+					
+				});
+				$("#btnCan").click(function(){
+					//重置form表单
+					$("form").get(0).reset();
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div id="panel_login">
+			<div id="login" class="easyui-panel" title="登录"
+			style="width: 500px;height: 200px;padding: 10px;"
+			data-options="iconCls:'mlogin',collapsible:true,minimizable:true,maximizable:true,
+				closable:true">
+				<form action="main.html" method="get">
+					<table>
+						<tr>
+							<td>用户名：</td>
+							<td><input type="text" name="username"/></td>
+						</tr>
+						<tr>
+							<td>密&nbsp;&nbsp;&nbsp;码：</td>
+							<td><input type="password" name="pwd"/></td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<!--使用easyUI添加提交和重置按钮-->
+								<a id="btnCon" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-save'">登录</a>&nbsp;&nbsp;&nbsp;&nbsp;
+								<a id="btnCan" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'">重置</a> 
+							</td>
+						</tr>
+					</table>
+					
+				</form>
+			</div>
+		</div>
+		
+	</body>
+</html>

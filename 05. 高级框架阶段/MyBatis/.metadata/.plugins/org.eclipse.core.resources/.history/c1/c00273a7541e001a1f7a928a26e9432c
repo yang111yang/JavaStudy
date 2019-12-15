@@ -1,0 +1,5 @@
+package com.liu.util;
+
+public class MyBatisUtil {
+
+}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Window对象</title>
+		<script type="text/javascript">
+			function onConfirm(){
+				var flag = confirm("您确认要删除这个员工吗");
+				if(flag){
+					alert("已经将该员工从服务器上删除了");
+				}
+			}
+			
+			function onPrompt(){
+				var score = prompt("请输入分数","");
+				console.info(score);
+			}
+			
+			function onOpen(){
+				open("06-时钟效果1.html","","top=100,left=200,height=400,width=300,resizable=no");
+			}
+		</script>
+	</head>
+	<body>
+		<input type="button" value="警告窗口" onclick="alert('密码长度必须大于6')"/><br />
+		<input type="button" value="确认窗口" onclick="onConfirm()"/><br />
+		<input type="button" value="提示输入窗口" onclick="onPrompt()"/><br />
+		<input type="button" value="弹出窗口" onclick="onOpen()"/><br />
+		<input type="button" value="" onclick=""/><br />
+		<input type="button" value="" onclick=""/>
+		
+	</body>
+</html>

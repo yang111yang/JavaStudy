@@ -1,0 +1,114 @@
+package com.liu.server;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.Socket;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+/**
+ * 请求信息处理
+ * 处理请求参数和中文
+ * @author liujy
+ *
+ */
+public class Request02 {
+
+	private String requestInfo; //协议信息
+	private String requestMethod; // 请求方式
+	private String requestUrl; // url
+	private String requestPara; // 请求参数
+	private final String CRLF = "\r\n";
+	private Map<String,List<String>> paraMap;
+	
+	public Request02(Socket client) throws IOException {
+		this(client.getInputStream());
+	}
+	
+	public Request02(InputStream is) {
+		paraMap = new HashMap<String, List<String>>();
+		byte[] datas = new byte[1024*1024];
+		int len;
+		try {
+			len = is.read(datas);
+			requestInfo = new String(datas,0,len);
+			System.out.println(requestInfo);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		// 分解字符串
+		parseRequestInfo();
+	}
+	
+	public void parseRequestInfo() {
+		this.requestMethod = this.requestInfo.substring(0,this.requestInfo.indexOf("/")).toLowerCase().trim();
+		int startIdx = this.requestInfo.indexOf("/") + 1;
+		int endIdx = this.requestInfo.indexOf("HTTP/");
+		this.requestUrl = this.requestInfo.substring(startIdx, endIdx);
+		int queryIdx = this.requestUrl.indexOf("?");
+		if (queryIdx > 0) {
+			String[] split = this.requestUrl.split("\\?");
+			this.requestUrl = split[0];
+			this.requestPara = split[1].trim();
+		}
+		if (this.requestMethod.equals("post")) {
+			String qStr = this.requestInfo.substring(this.requestInfo.lastIndexOf(CRLF)).trim();
+			if (this.requestPara == null) {
+				this.requestPara = qStr;
+			} else {
+				this.requestPara += "&" + qStr;
+			}
+		}
+		System.out.println(this.requestMethod+"-->"+this.requestUrl+"-->"+this.requestPara);
+		
+		// 将请求参数转换成Map
+		convertMap();
+	}
+	
+	/**
+	 * 将请求参数转换成Map
+	 */
+	public void convertMap() {
+		// 将请求参数按照&拆分
+		String[] paraStrs = requestPara.split("&");
+		for (String paraStr : paraStrs) {
+			// 再次按照=拆分
+			String[] kv = paraStr.split("=");
+			String key = kv[0];
+			String value = kv[1];
+			
+			if (!paraMap.containsKey(key)) {
+				paraMap.put(key, new ArrayList<String>());
+			}
+			
+			// 添加value
+			paraMap.get(key).add(value);
+		}
+	}
+	
+	/**
+	 * 根据key获取多个value
+	 * @param key
+	 * @return
+	 */
+	public String[] getParaValues(String key) {
+		List<String> list = paraMap.get(key);
+		if (list == null || list.size() < 1) {
+			return null;
+		}
+		return list.toArray(new String[0]);
+	}
+	
+	/**
+	 * 根据key获取一个value
+	 * @param key
+	 * @return
+	 */
+	public String getParaValue(String key) {
+		String[] values = getParaValues(key);
+		return values == null ? null : values[0];
+	}
+}

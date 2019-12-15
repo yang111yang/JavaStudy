@@ -1,0 +1,76 @@
+package com.liu.po;
+
+import java.sql.*;
+import java.util.*;
+
+public class Emp {
+
+	private String empname;
+	private Double bonus;
+	private Integer deptId;
+	private Integer id;
+	private Double salary;
+	private Integer age;
+
+	public Emp() {
+	}
+
+	public Emp(String empname, Double bonus, Integer deptId, Integer id, Double salary, Integer age) {
+		super();
+		this.empname=empname;
+		this.bonus=bonus;
+		this.deptId=deptId;
+		this.id=id;
+		this.salary=salary;
+		this.age=age;
+	}
+
+	public String getEmpname(){
+		return empname;
+	}
+
+	public Double getBonus(){
+		return bonus;
+	}
+
+	public Integer getDeptId(){
+		return deptId;
+	}
+
+	public Integer getId(){
+		return id;
+	}
+
+	public Double getSalary(){
+		return salary;
+	}
+
+	public Integer getAge(){
+		return age;
+	}
+
+	public void setEmpname(String empname){
+		this.empname=empname;
+	}
+
+	public void setBonus(Double bonus){
+		this.bonus=bonus;
+	}
+
+	public void setDeptId(Integer deptId){
+		this.deptId=deptId;
+	}
+
+	public void setId(Integer id){
+		this.id=id;
+	}
+
+	public void setSalary(Double salary){
+		this.salary=salary;
+	}
+
+	public void setAge(Integer age){
+		this.age=age;
+	}
+
+}

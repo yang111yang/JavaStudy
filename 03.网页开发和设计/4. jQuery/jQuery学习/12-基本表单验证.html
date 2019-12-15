@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>表单验证</title>
+		<script src="js/jQuery-1.8.3.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			function checkForm(){
+				var username = $("#user").val();
+				if(username.length == 0){
+					alert("用户名不能为空");
+					return false;
+				}
+				if (username.length <= 6) {
+					alert("用户名长度不能小于6");
+					return false;
+				}
+				for (var i = 0; i < username.length; i++) {
+					if (username[i]>=0 || username[i] <= 9) {
+						alert("用户名不能含有数字");
+						return false;
+					}
+				}
+				
+				var email = $("#email").val();
+				if (email.indexOf("@") < 0) {
+					alert("邮箱必须含有@");
+					return false;
+				}
+				if (email.indexOf(".") < 0) {
+					alert("邮箱必须含有.");
+					return false;
+				}
+				return true;
+			}
+		</script>
+	</head>
+	<body>
+		<table  id="center" border="0" cellspacing="0" cellpadding="0">
+          <form action="doRegister.jsp" method="post" name="myform" onsubmit="return checkForm()">
+           <tr>
+              <td >您的姓名：</td>
+              <td><input id="user" type="text"  /></td>
+            </tr>
+            <tr>
+              <td >输入密码：</td>
+              <td><input id="pwd" name="pwd" type="password"/></td>
+            </tr>
+            <tr>
+              <td >再输入一遍密码：</td>
+              <td><input id="repwd" type="password"/></td>
+            </tr>
+           <tr>
+              <td >您的Email：</td>
+              <td><input id="email" type="text"/></td>
+            </tr>   
+            <tr>
+              <td>&nbsp;</td>
+              <td ><input name="btn"  type="submit"   value="注册" class="rb1"     /></td>
+            </tr>
+          </form>
+        </table>
+	</body>
+</html>

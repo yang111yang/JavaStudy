@@ -1,0 +1,57 @@
+package com.liu.server;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.Socket;
+
+/**
+ * 请求信息处理
+ * @author liujy
+ *
+ */
+public class Request {
+
+	private String requestInfo; //协议信息
+	private String requestMethod; // 请求方式
+	private String requestUrl; // url
+	private String requestPara; // 请求参数
+	private final String CRLF = "\r\n";
+	
+	public Request(Socket client) throws IOException {
+		this(client.getInputStream());
+	}
+	
+	public Request(InputStream is) {
+		byte[] datas = new byte[1024*1024];
+		int len;
+		try {
+			len = is.read(datas);
+			requestInfo = new String(datas,0,len);
+			System.out.println(requestInfo);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		// 分解字符串
+		parseRequestInfo();
+	}
+	
+	public void parseRequestInfo() {
+		this.requestMethod = this.requestInfo.substring(0,this.requestInfo.indexOf("/")).toLowerCase().trim();
+		System.out.println(this.requestMethod);
+		int startIdx = this.requestInfo.indexOf("/") + 1;
+		int endIdx = this.requestInfo.indexOf("HTTP/");
+		this.requestUrl = this.requestInfo.substring(startIdx, endIdx);
+		int queryIdx = this.requestUrl.indexOf("?");
+		if (queryIdx > 0) {
+			String[] split = this.requestUrl.split("\\?");
+			this.requestUrl = split[0];
+			this.requestPara = split[1].trim();
+		}
+		System.out.println(this.requestUrl);
+		if (this.requestMethod.equals("post")) {
+			this.requestPara += "&" + this.requestInfo.substring(this.requestInfo.lastIndexOf(CRLF)).trim();
+		}
+		System.out.println(this.requestPara);
+	}
+}

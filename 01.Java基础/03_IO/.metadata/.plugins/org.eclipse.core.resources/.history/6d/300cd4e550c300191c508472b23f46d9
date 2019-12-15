@@ -1,0 +1,24 @@
+package com.liujy.commsio;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.commons.io.FileUtils;
+
+/**
+ * 	文件的拷贝
+ * @author 刘建阳
+ *
+ */
+public class CIOTest05 {
+
+	public static void main(String[] args) throws IOException {
+		// 复制文件到文件
+		FileUtils.copyFile(new File("io.jpg"), new File("io-copy.jpg"));
+		
+		
+	}
+	
+}

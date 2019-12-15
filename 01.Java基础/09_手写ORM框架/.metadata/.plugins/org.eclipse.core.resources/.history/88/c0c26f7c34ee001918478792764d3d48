@@ -1,0 +1,5 @@
+package com.liu.sorm.pool;
+
+public class DBConnPool {
+
+}

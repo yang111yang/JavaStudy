@@ -1,0 +1,24 @@
+package com.liujy.mycollection;
+
+public class Node2<K,V> {
+	
+	int hash;
+	K k;
+	V v;
+	Node2<K,V> next;
+	
+	public Node2() {
+		super();
+	}
+
+	public Node2(int hash, K k, V v, Node2<K,V> next) {
+		super();
+		this.hash = hash;
+		this.k = k;
+		this.v = v;
+		this.next = next;
+	}
+
+	
+	
+}

@@ -1,0 +1,25 @@
+package com.liu.annotation;
+
+import java.lang.annotation.Annotation;
+
+/**
+ * 使用反射获取注解信息
+ * @author liujy
+ *
+ */
+public class Demo {
+
+	public static void main(String[] args) {
+		try {
+			Class clazz = Class.forName("com.liu.annotation.Student");
+			// 获取所有的类的反射
+			Annotation[] annotations = clazz.getAnnotations();
+			for (Annotation a : annotations) {
+				System.out.println(a);
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+	
+}

@@ -1,0 +1,49 @@
+package com.liujy.io1;
+
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+/**
+ * 	字节数组输出流
+ * 	操作步骤（分段读取）
+ * 	1、创建源 ：不需要创建源
+ * 	2、选择流 ：获取数据需要使用ByteArrayOutputStream的新方法，所以不能使用多态
+ * 	3、操作
+ * 	4、释放资源：可以不释放
+ * @author 刘建阳
+ *
+ */
+public class IOTest07 {
+	
+	public static void main(String[] args) {
+		// 1、创建源
+//		byte[] dest = null;
+		// 2、选择流
+		ByteArrayOutputStream baos = null;
+		try {
+			baos = new ByteArrayOutputStream();
+			String msg = "我是一只小小鸟\r\n";
+			byte[] flush = msg.getBytes(); // 字符-->字节（编码）
+			baos.write(flush);
+			
+			byte[] bs = baos.toByteArray();
+			System.out.println(new String(bs,0,baos.size()));
+			baos.flush();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (baos != null) {
+					baos.close();
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+		
+
+}

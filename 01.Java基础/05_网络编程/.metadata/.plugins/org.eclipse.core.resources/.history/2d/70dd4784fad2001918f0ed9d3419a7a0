@@ -1,0 +1,5 @@
+package com.net.tcp;
+
+public class Client {
+
+}

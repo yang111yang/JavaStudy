@@ -1,0 +1,44 @@
+package com.liu.testorm;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * 使用Map 封装一条记录
+ * 使用List<Map>/Map<Map>封装多条记录
+ * @author liujy
+ *
+ */
+public class Demo02 {
+	
+	public static void main(String[] args) {
+		Connection conn = JDBCUtils.getMysqlConnection();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		Map<String,Object> row = new HashMap<String,Object>();
+		try {
+			ps = conn.prepareStatement("select empname,salary,age from emp where id=?");
+			ps.setObject(1, 1);
+			rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				row.put("empname", rs.getObject(1));
+				row.put("salary", rs.getObject(2));
+				row.put("age", rs.getObject(3));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtils.close(ps, conn, rs);
+		}
+		
+		for (String key:row.keySet()) {
+			System.out.print(key + "-->" + row.get(key)+"\t");
+		}
+	}
+
+}

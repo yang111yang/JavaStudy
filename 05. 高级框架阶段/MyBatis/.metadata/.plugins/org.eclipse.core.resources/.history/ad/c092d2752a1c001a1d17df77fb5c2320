@@ -1,0 +1,15 @@
+package com.liu.service;
+
+import com.liu.pojo.PageInfo;
+
+public interface PeopleService {
+	
+	/**
+	 * ∑÷“≥œ‘ æ
+	 * @param pageSize
+	 * @param pageNumber
+	 * @return
+	 */
+	PageInfo showPage(int pageSize,int pageNumber);
+
+}

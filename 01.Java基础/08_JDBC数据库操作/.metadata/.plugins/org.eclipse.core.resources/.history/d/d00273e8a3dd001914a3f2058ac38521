@@ -1,0 +1,9 @@
+package com.liu.jdbc;
+/**
+ * 测试数据库连接
+ * @author liujy
+ *
+ */
+public class TestJDBC01 {
+
+}

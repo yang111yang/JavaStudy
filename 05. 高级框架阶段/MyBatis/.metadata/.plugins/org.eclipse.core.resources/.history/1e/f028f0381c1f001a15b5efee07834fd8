@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liu.mapper.StudentMapper">
+	<select id="selByPage" resultType="list" parameterType="pageinfo">
+		select * from student
+		<where>
+			<if test="sname!=null and sname!=''">
+				<bind name="sname" value="'%'+sname+'%'"/>
+				and sname like #{sname}
+			</if>
+			<if test="tname!=null and tname!=''">
+				and tid in(select id from teacher where name like #{tname})
+			</if>
+		</where>
+		limit#{pageStart},#{pageSize}
+	</select>
+	<select id="selCount" resultType="long" parameterType="pageinfo">
+		select * from student
+		<where>
+			<if test="sname!=null and sname!=''">
+				<bind name="sname" value="'%'+sname+'%'"/>
+				and sname like #{sname}
+			</if>
+			<if test="tname!=null and tname!=''">
+				and tid in(select id from teacher where name like #{tname})
+			</if>
+		</where>
+	</select>
+</mapper>

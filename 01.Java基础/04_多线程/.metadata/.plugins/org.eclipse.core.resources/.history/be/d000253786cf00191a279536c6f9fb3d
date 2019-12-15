@@ -1,0 +1,81 @@
+package com.liujy.cooperation;
+
+/**
+ * 线程协作：生产者消费者模式的实现一：管程法
+ * 管程法的几个元素：生产者、消费者、缓冲区、商品
+ * @author 刘建阳
+ *
+ */
+public class CooTest01 {
+	
+	public static void main(String[] args) {
+		
+		for (int i = 0; i < 1000; i++) {
+			
+		}
+	}
+
+}
+
+// 生产者
+class Productor extends Thread {
+	Buffer buffer;
+	
+	public Productor(Buffer buffer) {
+		this.buffer = buffer;
+	}
+
+	@Override
+	public void run() {
+		for (int i = 0; i < 1000; i++) {
+			System.out.println("生产"+i+"个馒头");
+			buffer.push(new SteamedBun(i));
+		}
+	}
+	
+}
+// 消费者
+class Consumer extends Thread {
+	Buffer buffer;
+	
+	public Consumer(Buffer buffer) {
+		this.buffer = buffer;
+	}
+
+	@Override
+	public void run() {
+		for (int i = 0; i < 100; i++) {
+			System.out.println("获取"+i+"个馒头");
+			buffer.pop();
+		}
+	}
+}
+// 缓冲区
+class Buffer {
+	// 容器
+	SteamedBun[] buns = new SteamedBun[10];
+	// 计数器
+	int count;
+	
+	// 存储数据
+	public void push(SteamedBun bun) {
+		buns[count] = bun;
+		count++;
+	}
+	
+	// 获取数据
+	public SteamedBun pop() {
+		SteamedBun bun = buns[count];
+		count--;
+		return bun;
+	}
+}
+// 馒头
+class SteamedBun {
+	int id;
+
+	public SteamedBun(int id) {
+		this.id = id;
+	}
+	
+}

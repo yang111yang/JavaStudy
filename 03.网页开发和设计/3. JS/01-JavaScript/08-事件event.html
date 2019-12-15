@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>事件</title>
+		<script type="text/javascript">
+			function func1(obj){
+				var div1Value = obj.innerHTML;
+				obj.innerHTML = parseInt(div1Value)+1;
+			}
+		</script>
+	</head>
+	<body>
+		<form action="">
+			<table>
+				<tr>
+					<td width="100px">第一个数字：</td>
+					<td width="200px">
+						<input type="text" id="num1" name="num1" value="123" 
+							onfocus="document.getElementById('num1').value = '';" 
+							onblur="document.getElementById('result').innerHTML=document.getElementById('num1').value;"/>
+					</td>
+				</tr>
+				<tr>
+					<td>第二个数字：</td>
+					<td>
+						<input type="text" id="num2" name="num2" />
+					</td>
+				</tr>
+				<tr>
+					<td>运算符：</td>
+					<td>
+						<select name="oper" id="oper" onchange="document.getElementById('result').innerHTML=document.getElementById('oper').value;">
+							<option value="+">加</option>
+							<option value="-">减</option>
+							<option value="*">乘</option>
+							<option value="/">除</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<input type="button" name="" id="btn" value="提交" onclick="calc()"/>
+					</td>
+				</tr>
+				<tr>
+					<td>结果：</td>
+					<td>
+						<div id="result">
+						</div>
+					</td>
+				</tr>
+			</table>
+		</form>
+		<div id="div1" style="border: 1px solid red; background-color: blue; width: 400px;height: 300px;"
+			onmouseover="this.style.backgroundColor='red'"
+			onmouseout="this.style.backgroundColor='blue'"
+			onmousemove="func1(this)">
+			1
+		</div>
+	</body>
+</html>

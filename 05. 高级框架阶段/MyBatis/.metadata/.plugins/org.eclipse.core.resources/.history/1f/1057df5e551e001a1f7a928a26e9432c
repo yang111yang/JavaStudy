@@ -1,0 +1,8 @@
+package com.liu.util;
+
+public class MyBatisUtil {
+	
+	private static final ThreadLocal<String> threadLocal = new ThreadLocal<>();
+	private static SqlSessionFactory
+
+}

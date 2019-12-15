@@ -1,0 +1,26 @@
+package com.liu.server;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.Socket;
+
+/**
+ * 请求信息
+ * @author liujy
+ *
+ */
+public class Request {
+	
+	private Socket client;
+	
+	public Request() {}
+	
+	public Request(Socket client) throws IOException {
+		this(client.getInputStream());
+	}
+	
+	public Request(InputStream is) {
+		this();
+	}
+
+}

@@ -1,0 +1,47 @@
+package com.liujy.other;
+
+/**
+ * DCL单例模式：懒汉式套路基础上加入并发控制，保证在多线程环境下，对外存在一个对象
+ * 1.构造器私有化-->避免外部new构造器
+ * 2.提供私有的静态属性-->存储对象的地址
+ * 3.提供公共的静态方法-->获取属性
+ * @author 刘建阳
+ *
+ */
+public class DoubleCheckedLocking {
+	// 私有化静态属性，volatile避免指令重排，保证数据的同步性
+	private static volatile DoubleCheckedLocking instance;
+	// 私有化构造器
+	private DoubleCheckedLocking() {
+		
+	}
+	
+	public static DoubleCheckedLocking getInstance() {
+		if (instance != null) {
+			return instance;
+		}
+		synchronized (DoubleCheckedLocking.class) {
+			if (instance == null) {
+				instance = new DoubleCheckedLocking();
+			}
+		}
+		return instance;
+	}
+	
+	public static DoubleCheckedLocking getInstance1() {
+		synchronized (DoubleCheckedLocking.class) {
+			if (instance == null) {
+				instance = new DoubleCheckedLocking();
+			}
+		}
+		return instance;
+	}
+	public static void main(String[] args) {
+		new Thread(()-> {
+			System.out.println(DoubleCheckedLocking.getInstance1());
+		}).start();
+		Thread.sleep(2000);
+		System.out.println(DoubleCheckedLocking.getInstance1());
+	}
+
+}

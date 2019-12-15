@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>操作元素</title>
+		<style type="text/css">
+			div{
+				font-size:16px;
+				border:1px solid #003a75;
+				margin:5px;
+			}
+			.myClass{
+				background-color:#7FFFD4;
+			}
+		</style>
+		<script src="js/jQuery-1.8.3.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				var newDiv = $("<div><p>口才训练课</p></div>")
+				//append()、appendTo() 添加子元素（末尾）
+				//$("div").append(newDiv);
+				//newDiv.appendTo($("div:first"));
+				//prepend()  prependTo() 添加子元素（前置）
+				//$("div").prepend(newDiv);
+				//newDiv.prependTo($("div:last"));
+				//insertBefore()、before() 添加平级元素（前面）
+				//$("div:first").before(newDiv);
+				//insertAfter() 、 after()添加平级元素（后面）
+				//$("div:first").after(newDiv);
+				
+				//
+				//replaceWith()和replaceAll() 用于替换某个节点
+				//$("div:last").replaceWith(newDiv);
+				//remove() 删除元素  empty() 删除子元素
+				//$("div:first").remove(); //自己讲自己删除
+				//$("div:first").empty();
+				
+				//删除上级（多层上级）
+				//$("#p1").parent().parent().remove();
+				//$("#p1").parents("body").remove();
+				//删除自己
+				//$("#p1").remove();
+				//删除下级（多层下级）
+				//$("#div1").children().remove();
+				//$("#div1").find("p#p1").remove();
+				
+				//删除平级
+				//$("#p8").nextAll().remove();
+				$("p").has("span").remove();
+			});
+		</script>
+	</head>
+	<body>
+		<div id="div1">
+		    <p id="p1">1. JavaSE</p>
+			<p>2. Oracle</p>			 
+		</div>
+	
+		<div>			
+		    <p>3. HTML/CSS/JS</p>
+		    <p>4. jQuery/EasyUI</p>
+		    <p>5. JSP/Servlet/Ajax</p>
+		   
+		</div>
+		
+		<div>
+			<p>6. SSM</p>
+		    <p>7. SpringBoot/SpringCloud/SpringData</p>
+			<p id="p8">8. Maven/Linux</p>
+			<p><span>9. Redis/Solr/Nginx</span></p>
+		 	<p>10. SpringBoot/SpringCloud/SpringData</p>
+		</div>
+		
+		<div>
+		    <p>11. 就业指导</p>
+		</div>
+	</body>
+</html>

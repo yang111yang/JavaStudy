@@ -1,0 +1,76 @@
+package com.liu.jdbc;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
+/**
+ * 测试时间处理(java.sql.Date,java.sql.Time,java.sql.Timestamp),按时间分段查询
+ * @author liujy
+ *
+ */
+public class TestJDBC08 {
+	
+	public static long strToDate(String date) {
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		try {
+			return df.parse(date).getTime();
+		} catch (ParseException e) {
+			e.printStackTrace();
+			return 0;
+		}
+	}
+
+	public static void main(String[] args) {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		try {
+			// 加载驱动
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			// 建立连接
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/testjdbc?useSSL=false&serverTimezone=UTC",
+					"root", "123456");
+			
+			long start = strToDate("2019-09-20 10:12:33");
+			long end = strToDate("2019-09-22 11:10:50");
+			
+			ps = conn.prepareStatement("select * from t_user where lastLoginTime>? and lastLoginTime<? order by lastLoginTime");
+			ps.setObject(1, new java.sql.Date(start));
+			ps.setObject(2, new java.sql.Timestamp(end));
+			
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				System.out.println(rs.getInt("id")+"--"+rs.getString("username")
+						+"--"+rs.getDate("regTime")+"--"+rs.getTimestamp("lastLoginTime"));
+			}
+			
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (ps != null) {
+					ps.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			try {
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	
+}

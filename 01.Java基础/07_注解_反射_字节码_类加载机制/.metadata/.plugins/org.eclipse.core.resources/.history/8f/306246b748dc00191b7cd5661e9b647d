@@ -1,0 +1,80 @@
+package com.liu.test;
+
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
+
+import org.junit.jupiter.api.Test;
+
+import javassist.ClassPool;
+import javassist.CtClass;
+import javassist.CtMethod;
+import javassist.NotFoundException;
+
+public class Demo02 {
+	
+	/**
+	 * 获取处理类的信息
+	 * @throws NotFoundException 
+	 */
+	@Test
+	public void test01() throws NotFoundException {
+		CtClass cc = getCtClass();
+		
+		System.out.println(cc.getName());// 获取类名
+		System.out.println(cc.getSimpleName());// 获取简要类名
+		System.out.println(cc.getSuperclass());// 获取父类
+		System.out.println(cc.getInterfaces());// 获取接口
+	}
+
+	private CtClass getCtClass() {
+		ClassPool pool = ClassPool.getDefault();
+		CtClass cc = pool.makeClass("com.liu.test.Emp");
+		return cc;
+	}
+	
+	/**
+	 * 测试产生新的方法
+	 * @throws Exception 
+	 */
+	@Test
+	public void test02() throws Exception {
+		CtClass cc = getCtClass();
+		
+//		CtMethod m2 = CtMethod.make("public int getEmpno(){return this.empno;}", cc);
+		CtMethod m = new CtMethod(CtClass.intType, "add", 
+				new CtClass[] {CtClass.intType,CtClass.intType},cc);
+		m.setModifiers(Modifier.PUBLIC);
+		m.setBody("{System.out.println(\"我爱北京天安门\");return $1+$2;}");
+		cc.addMethod(m);
+		
+		// 通过反射调用新生成的方法
+		Class clazz = cc.toClass();
+		Object obj = clazz.newInstance();
+		Method method = clazz.getDeclaredMethod("add", int.class, int.class);
+		Object result = method.invoke(obj, 200, 300);
+		System.out.println(result);
+	}
+
+	/**
+	 * 修改已有的方法，修改方法体的内容
+	 * @throws Exception 
+	 */
+	@Test
+	public void test03() throws Exception {
+		CtClass cc = getCtClass();
+		
+		CtMethod[] methods = cc.getDeclaredMethods();
+		System.out.println(methods.length);
+		
+		CtMethod m = cc.getDeclaredMethod("sayHello", new CtClass[] {CtClass.intType});
+		
+		m.insertBefore("System.out.println(\"=====before=====\");");
+		
+		// 通过反射调用新生成的方法
+		Class clazz = cc.toClass();
+		Object obj = clazz.newInstance();
+		Method method = clazz.getDeclaredMethod("sayHello", int.class);
+		method.invoke(obj, 300);
+	}
+	
+}

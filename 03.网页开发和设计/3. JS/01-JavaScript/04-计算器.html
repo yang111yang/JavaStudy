@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>计算器</title>
+		<style type="text/css">
+			table{
+				margin: 20px auto;
+			}
+			tr{
+				height: 20px;
+			}	
+		</style>
+		<script type="text/javascript">
+			function calc(){
+				//获取输入框的数据和运算符
+				var n1 = document.getElementById("num1").value;
+				var n2 = document.getElementById("num2").value;
+				var oper = document.getElementById("oper").value;
+				//对数据进行格式检查
+				if(n2 == 0 && oper == "/"){
+					document.getElementById("result").innerHTML=
+					'<span style="color: red; font-weight: bold;">除数不能为0</span>';
+					return;
+				}
+				if(isNaN(n1) || isNaN(n2)){
+					document.getElementById("result").innerHTML=
+					'<span style="color: red; font-weight: bold;">两个数都只能是数字</span>';
+					return;
+				}
+				var result;
+				//运算
+				switch (oper){
+					case "+":
+						result = parseInt(n1) + parseInt(n2);
+						break;
+					case "-":
+						result = n1 - n2;
+						break;
+					case "*":
+						result = n1 * n2;
+						break;
+					case "/":
+						result = n1 / n2;
+						break;
+					default:
+						break;
+				}
+				//显示结果
+				document.getElementById("result").innerHTML= result;
+			}
+		</script>
+	</head>
+	<body>
+		<form action="">
+			<table>
+				<tr>
+					<td width="100px">第一个数字：</td>
+					<td width="200px">
+						<input type="text" id="num1" name="num1" value="123" />
+					</td>
+				</tr>
+				<tr>
+					<td>第二个数字：</td>
+					<td>
+						<input type="text" id="num2" name="num2" />
+					</td>
+				</tr>
+				<tr>
+					<td>运算符：</td>
+					<td>
+						<select name="oper" id="oper">
+							<option value="+">加</option>
+							<option value="-">减</option>
+							<option value="*">乘</option>
+							<option value="/">除</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<input type="button" name="" id="btn" value="提交" onclick="calc()"/>
+					</td>
+				</tr>
+				<tr>
+					<td>结果：</td>
+					<td>
+						<div id="result">
+						</div>
+					</td>
+				</tr>
+			</table>
+		</form>
+		
+	</body>
+</html>

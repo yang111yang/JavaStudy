@@ -1,0 +1,42 @@
+package com.net.chat;
+
+import java.io.BufferedReader;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.Socket;
+import java.net.UnknownHostException;
+
+/**
+ * @version:1.0
+ * @Description:聊天室：客户端
+ * @author:刘建阳
+ * @date:2019年9月9日下午8:07:42
+ */
+public class Client {
+	
+	public static void main(String[] args) throws UnknownHostException, IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		// 1、建立连接: 使用Socket创建客户端 +服务的地址和端口
+		Socket client = new Socket("localhost", 8888);
+		// 2、操作: 
+		// 发送消息
+		DataOutputStream dos = new DataOutputStream(client.getOutputStream());
+		DataInputStream dis = new DataInputStream(client.getInputStream());
+		boolean isRunning = true;
+		while (isRunning) {
+			String msg = br.readLine();
+			dos.writeUTF(msg);
+			// 接收消息
+			String result = dis.readUTF();
+			System.out.println(result);
+		}
+		// 3、释放资源 
+		dis.close();
+		dos.close();
+		client.close();
+	}
+
+}

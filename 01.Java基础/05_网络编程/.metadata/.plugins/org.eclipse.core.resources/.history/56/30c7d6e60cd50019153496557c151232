@@ -1,0 +1,30 @@
+package com.net.chat;
+
+import java.io.Closeable;
+
+/**
+ * 
+ * @Description: 聊天室工具类
+ * @author:liujy
+ * @version:1.0
+ * @date:2019年9月12日上午11:20:47
+ */
+public class ChatUtils {
+	
+	/**
+	 * 释放资源
+	 * @param targets 可变参数
+	 */
+	public void close(Closeable ... targets) {
+		for (Closeable closeable : targets) {
+			try {
+				if (closeable != null) {
+					closeable.close();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+}

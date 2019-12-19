@@ -1,0 +1,1 @@
+INDEX VERSION 1.131+E:\workspace\SXT\07_注解_反射_字节码_类加载机制\.metadata\.plugins\org.eclipse.jdt.core

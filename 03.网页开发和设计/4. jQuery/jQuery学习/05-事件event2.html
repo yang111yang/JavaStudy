@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>事件event</title>
+		<style type="text/css">
+			li{
+				background-color: gray;
+				font-size: 13px;
+				color: white;
+				width: 100px;
+				height: 40px;
+				line-height: 40px;
+				letter-spacing: 2px;
+				text-align: center;
+				border:1px solid red;
+				list-style-type: none;
+				float: left;
+				border-radius: 10px;
+				margin-left: 10px;
+			}
+			.altli{
+				background-color: red;
+				color: yellow;
+				font-size: 16px;
+				border: 1px black solid;
+			}
+			.backli{
+				background-color: gray;
+				color: white;
+				font-size: 13px;
+				border: 1px red solid;
+			}
+		</style>
+		<script src="js/jQuery-1.8.3.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				$("input[value='绑定']").click(function(){
+					$("li").mouseover(function(){
+						$(this).removeClass("backli").addClass("altli");
+					});
+					$("li").mouseout(function(){
+						$(this).removeClass("altli").addClass("backli");
+					});
+				});
+				
+				$("input[value='解除绑定']").click(function(){
+					$("li").unbind();
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<ul>
+			<li>前端技术</li>
+			<li>人工智能</li>
+			<li>大数据</li>
+		</ul>
+		<br /><br /><br />
+		<input type="button" value="绑定" />
+		<input type="button" value="解除绑定" />
+	</body>
+</html>

@@ -1,0 +1,13 @@
+package com.liu.user;
+
+import com.liu.server.Request;
+import com.liu.server.Response;
+
+public class RegistServlet implements Servlet {
+
+	@Override
+	public void service(Request request, Response response) {
+		System.out.println("注册成功");
+	}
+
+}

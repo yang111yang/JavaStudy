@@ -1,0 +1,41 @@
+package com.liujy.mycollection;
+
+public class MyHashMap01<K,V> {
+	
+	Node2<K,V>[] table;
+	int size;
+	
+	public MyHashMap01() {
+		table = new Node2[16];
+	}
+
+	
+	public void put(K k, V v) {
+		Node2<K, V> newNode = new Node2<>();
+		newNode.setK(k);
+		newNode.setV(v);
+		newNode.setHash(getMyHash(k,table.length));
+		newNode.setNext(null);
+		if (table[newNode.getHash()] == null) { 
+			// 如果数组元素为空，直接将节点放进去
+			table[newNode.getHash()] = newNode;
+		} else {
+			
+		}
+	}
+
+
+	private int getMyHash(K k,int length) {
+		return k.hashCode() & (length - 1);
+	}
+	
+	
+	public static void main(String[] args) {
+		MyHashMap01<Integer, String> map = new MyHashMap01<>();
+		map.put(10, "aa");
+		map.put(20, "bb");
+		map.put(30, "cc");
+		
+	}
+
+}

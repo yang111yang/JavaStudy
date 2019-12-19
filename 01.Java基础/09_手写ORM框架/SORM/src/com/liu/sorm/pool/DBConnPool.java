@@ -1,0 +1,77 @@
+package com.liu.sorm.pool;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.liu.sorm.core.DBManager;
+
+/**
+ * 连接池
+ * @author liujy
+ *
+ */
+public class DBConnPool {
+
+	/**
+	 * 连接池对象
+	 */
+	private List<Connection> pool;
+	
+	/**
+	 * 连接池最小连接数
+	 */
+	private static final int POOL_MIN_SIZE = DBManager.getConf().getPoolMinSize();
+	
+	/**
+	 * 连接池最大连接数
+	 */
+	private static final int POOL_MAX_SIZE = DBManager.getConf().getPoolMaxSize();
+	
+	public DBConnPool() {
+		initPool();
+	}
+	
+	/**
+	 * 初始化连接池，使得连接池中的连接数达到最小值
+	 */
+	public void initPool() {
+		if (pool == null) {
+			pool = new ArrayList<Connection>();
+		}
+		while (pool.size()<DBConnPool.POOL_MIN_SIZE) {
+			pool.add(DBManager.createConn());
+		}
+	}
+	
+	/**
+	 * 从连接池中取出一个连接
+	 * @return	连接对象
+	 */
+	public synchronized Connection getConnection() {
+		int lastIndex = pool.size() - 1;
+		Connection connection = pool.get(lastIndex);
+		pool.remove(lastIndex);
+		return connection;
+	}
+	
+	/**
+	 * 将连接放到连接池中
+	 * @param connection
+	 */
+	public synchronized void close(Connection connection) {
+		if (pool.size() >= DBConnPool.POOL_MAX_SIZE) {
+			try {
+				if (connection != null) {
+					connection.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		} else {
+			pool.add(connection);
+		}
+	}
+	
+}

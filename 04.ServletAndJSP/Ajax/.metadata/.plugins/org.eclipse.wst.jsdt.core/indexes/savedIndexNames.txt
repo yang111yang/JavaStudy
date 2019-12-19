@@ -1,0 +1,2 @@
+INDEX VERSION 1.4+E:\JavaStudy\04.ServletAndJSP\Ajax\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+2104455497.index

@@ -1,0 +1,38 @@
+<html>
+	<head>
+		<title>照片墙</title>
+		<meta charset="UTF-8"/>
+		<style type="text/css">
+			body{
+				text-align: center;
+				margin-top: 150px;
+				background-color: gray;
+			}
+			img{
+				width: 15%;
+				padding: 10px;
+				background-color: white;
+				margin: 20px;
+				transform: rotate(-10deg);/*设置旋转的角度*/
+				position: relative;
+				z-index: 1;
+			}
+			img:hover{
+				transform: rotate(0deg) scale(1.5);/*设置旋转角度和放大倍数*/
+				position: relative;
+				z-index: 2;
+				transition: 1.5s;/*设置放大和旋转所用的时间*/
+			}
+		</style>
+	</head>
+	<body>
+		<img src="img/2.jpg" alt="" />
+		<img src="img/2.jpg" alt="" />
+		<img src="img/2.jpg" alt="" />
+		<img src="img/2.jpg" alt="" /><br />
+		<img src="img/2.jpg" alt="" />
+		<img src="img/2.jpg" alt="" />
+		<img src="img/2.jpg" alt="" />
+		<img src="img/2.jpg" alt="" />
+	</body>
+</html>

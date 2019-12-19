@@ -1,0 +1,6 @@
+INDEX VERSION 1.131+E:\workspace\SXT\06_ÊÖĞ´·şÎñÆ÷webserver\.metadata\.plugins\org.eclipse.jdt.core
+1803957706.index
+2196082943.index
+478217564.index
+4069483632.index
+1426363755.index

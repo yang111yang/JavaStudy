@@ -1,0 +1,20 @@
+package com.liu.server;
+
+import java.io.InputStream;
+import java.net.Socket;
+
+/**
+ * 请求信息处理
+ * @author liujy
+ *
+ */
+public class Request {
+
+	public Request(InputStream is) {
+	}
+	
+	public Request(Socket client) {
+		this(client.getInputStream());
+	}
+
+}

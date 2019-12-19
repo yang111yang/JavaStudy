@@ -1,0 +1,21 @@
+package com.liu.test;
+
+import org.junit.jupiter.api.Test;
+
+import javassist.ClassPool;
+import javassist.CtClass;
+
+public class Demo02 {
+	
+	/**
+	 * 获取处理类的信息
+	 */
+	@Test
+	public void test01() {
+		ClassPool pool = ClassPool.getDefault();
+		CtClass cc = pool.makeClass("com.liu.test.Emp");
+		
+		System.out.println(cc.getName());// 获取类的信息
+	}
+
+}

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>树状菜单</title>
+		<style type="text/css">
+			div {
+				font-size: 12px;
+				color: #000000;
+				line-height: 22px;
+			}
+			img {
+				vertical-align: middle;
+			}
+			a {
+				font-size: 13px;
+				color: #000000;
+				text-decoration: none;
+			}
+			a:hover {
+				font-size: 13px;
+				color: #999999
+			}
+		</style>
+		<script src="js/jQuery-1.8.3.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				//给主菜单项（超链接）绑定单击事件
+				$("#div1 div a").click(function(){
+					//获取超链接所在div的下一个div的display的状态
+					var val = $(this).parent().next().css("display");
+					//判断none，就改成block；否则改成none
+					if(val=="none"){
+						//block
+						//$(this).parent().next().css("display","block");
+						$(this).parent().next().show();
+						//前面图标改为-
+						$(this).children("img").attr("src","img/minus.gif");
+					}else{
+						//none
+						//$(this).parent().next().css("display","none");
+						$(this).parent().next().hide();
+						//前面图标改为+
+						$(this).find("img").attr("src","img/plus.gif");						
+					}
+					
+				});
+			})
+		</script>
+	</head>
+	<body>
+		<div id="div1" style="padding-left:100px;">
+			<div>
+				<a href="javascript:void(0)"><img src="img/plus.gif" border="0">分类讨论区</a>
+			</div>
+			<div id="1" style="display:none;padding-left:15px;"><img src="img/z-top.gif">BBS 系统
+				<BR>
+				<img src="img/z-top.gif">共建水木
+				<BR>
+				<img src="img/z-top.gif">站务公告栏
+				<BR>
+				<img src="img/z-top.gif">妆点水木
+				<BR>
+				<img src="img/z-end.gif">申请版主
+			</div>
+				
+			<div>
+				<a href="javascript:void(0)"><img src="img/plus.gif" border="0">社会信息</a>
+			</div>
+			<div id="2" style="display:none;padding-left:15px;"><img src="img/z-top.gif">美容品与饰品代理
+				<BR>
+				<img src="img/z-top.gif">考研资料市场
+				<BR>
+				<img src="img/z-top.gif">商海纵横
+				<BR>
+				<img src="img/z-top.gif">动物保护者
+				<BR>
+				<img src="img/z-top.gif">动物世界
+				<BR>
+				<img src="img/z-end.gif">中国风·神州各地
+			</div>
+			
+			<div>
+				<a href="javascript:void(0)"><img src="img/plus.gif" border="0">休闲娱乐</a>
+			</div>
+			<div id="3" style="display:none;padding-left:15px;"><img src="img/z-top.gif">ASCIIart全国转信
+				<BR>
+				<img src="img/z-top.gif">七彩水木
+				<BR>
+				<img src="img/z-top.gif">网友聚会
+				<BR>
+				<img src="img/z-top.gif">醉品人生
+				<BR>
+				<img src="img/z-top.gif">花木园艺
+				<BR>
+				<img src="img/z-end.gif">祝福
+			</div>
+			
+			
+			<div>
+				<a href="javascript:void(0)"><img src="img/plus.gif" border="0">电脑技术</a>
+			</div>
+			<div id="4" style="display:none;padding-left:15px;"><img src="img/z-top.gif">BBS安装管理
+				<BR>
+				<img src="img/z-top.gif">CAD技术
+				<BR>
+				<img src="img/z-top.gif">数字图像设计
+				<BR>
+				<img src="img/z-top.gif">电脑音乐制作
+				<BR>
+				<img src="img/z-top.gif">软件加密与解密
+				<BR>
+				<img src="img/z-end.gif">计算机体系结构</div>
+		</div>
+	</body>
+</html>

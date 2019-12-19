@@ -1,0 +1,34 @@
+package com.liujy.mycollection;
+
+public class MyHashMap01<K,V> {
+	
+	private Node2<K,V>[] table;
+	private int size;
+	
+	
+	public MyHashMap01() {
+		super();
+	}
+
+	public MyHashMap01(Node2<K, V>[] table, int size) {
+		super();
+		this.table = table;
+		this.size = size;
+	}
+	
+	public void put(K k, V v) {
+		Node2<K, V> newNode = new Node2<>();
+		newNode.setHash(k.hashCode() & (k.hashCode() - 1));
+		System.out.println(k.hashCode() & (k.hashCode() - 1));
+	}
+	
+	
+	public static void main(String[] args) {
+		MyHashMap01<Integer, String> map = new MyHashMap01<>();
+		map.put(10, "aa");
+		map.put(20, "bb");
+		map.put(30, "cc");
+		
+	}
+
+}

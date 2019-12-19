@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>时钟效果</title>
+		<script type="text/javascript">
+			function clock(){
+				var date = new Date();
+				document.getElementById("time").innerHTML=date.toLocaleString();
+				
+			}
+			var clo = window.setInterval(clock,1000);
+			function pauseClock(){
+				window.clearInterval(clo);
+			}
+			function continueClock(){
+				clo = window.setInterval(clock,1000);
+			}
+		</script>
+	</head>
+	<body>
+		<div id="time"></div>
+		<input type="button" value="暂停" onclick="pauseClock()"/>
+		<input type="button" value="继续" onclick="continueClock()"/>
+	</body>
+</html>

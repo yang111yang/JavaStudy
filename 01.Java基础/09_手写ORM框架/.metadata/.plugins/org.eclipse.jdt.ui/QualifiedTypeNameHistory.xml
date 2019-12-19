@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="java.lang.SuppressWarnings"/>
+    <fullyQualifiedTypeName name="com.sun.javafx.collections.MappingChange.Map"/>
+    <fullyQualifiedTypeName name="com.sun.xml.internal.stream.buffer.sax.Properties"/>
+    <fullyQualifiedTypeName name="java.util.Properties"/>
+    <fullyQualifiedTypeName name="java.util.Map"/>
+    <fullyQualifiedTypeName name="com.liu.sorm.bean.JavaFieldGetSet"/>
+    <fullyQualifiedTypeName name="com.liu.sorm.bean.ColumnInfo"/>
+    <fullyQualifiedTypeName name="com.liu.sorm.core.TypeConvertor"/>
+    <fullyQualifiedTypeName name="com.liu.sorm.bean.Configuration"/>
+    <fullyQualifiedTypeName name="java.io.File"/>
+    <fullyQualifiedTypeName name="java.io.BufferedWriter"/>
+    <fullyQualifiedTypeName name="java.io.FileWriter"/>
+    <fullyQualifiedTypeName name="com.liu.sorm.utils.JavaFileUtils"/>
+    <fullyQualifiedTypeName name="com.liu.sorm.core.MysqlTypeConvertor"/>
+    <fullyQualifiedTypeName name="com.liu.sorm.bean.TableInfo"/>
+    <fullyQualifiedTypeName name="com.liu.sorm.utils.StringUtils"/>
+    <fullyQualifiedTypeName name="java.lang.reflect.Method"/>
+    <fullyQualifiedTypeName name="com.liu.sorm.utils.ReflectUtils"/>
+    <fullyQualifiedTypeName name="java.lang.StringBuilder"/>
+    <fullyQualifiedTypeName name="com.mysql.cj.protocol.Resultset"/>
+    <fullyQualifiedTypeName name="com.liu.sorm.utils.JDBCUtils"/>
+    <fullyQualifiedTypeName name="org.junit.Test"/>
+    <fullyQualifiedTypeName name="com.liu.vo.EmpVO"/>
+    <fullyQualifiedTypeName name="com.liu.po.Emp"/>
+    <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+    <fullyQualifiedTypeName name="java.sql.ResultSet"/>
+    <fullyQualifiedTypeName name="com.liu.sorm.core.CallBack"/>
+    <fullyQualifiedTypeName name="com.liu.sorm.core.MysqlQuery"/>
+    <fullyQualifiedTypeName name="com.liu.sorm.core.TableContext"/>
+    <fullyQualifiedTypeName name="java.sql.Connection"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="com.liu.sorm.core.DBManager"/>
+    <fullyQualifiedTypeName name="com.liu.sorm.pool.DBConnPool"/>
+    <fullyQualifiedTypeName name="java.lang.Cloneable"/>
+    <fullyQualifiedTypeName name="com.liu.sorm.core.QueryFactory"/>
+</qualifiedTypeNameHistroy>

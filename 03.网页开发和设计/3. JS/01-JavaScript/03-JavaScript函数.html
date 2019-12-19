@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>函数</title>
+		<script type="text/javascript">
+			//无参数无返回值
+			function fun01(){
+				document.write("fun01");
+			}
+			fun01();
+			//无参数有返回值
+			function fun02(){
+				return 5;
+			}
+			var result = fun02();
+			console.info(result);
+			//有参数有返回值
+			function fun03(num1,num2,num3){
+				return num1+num2;
+			}
+			result = fun03(2,3);
+			console.info(result);
+			//函数的另外一种写法
+			var fun04 = function(num1,num2){
+				return num1-num2;
+			}
+			result = fun04(10,2);
+			console.info(result);
+			//系统函数
+			var a = "56";
+			var b = "69";
+			console.info(parseInt(a)+parseInt(b));
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

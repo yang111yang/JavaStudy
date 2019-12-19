@@ -1,0 +1,128 @@
+package com.liu.sorm.core;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Properties;
+
+import com.liu.sorm.bean.Configuration;
+
+/**
+ * 根据配置信息，维持连接对象的管理(增加连接池功能)
+ * @author liujy
+ *
+ */
+public class DBManager {
+	
+	private static Configuration conn;
+	/**
+	 * 静态代码化初始化配置信息
+	 */
+	static { 
+		
+		Properties pros = new Properties();
+		try {
+			pros.load(Thread.currentThread().getContextClassLoader().getResourceAsStream("db.properties"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		conn = new Configuration();
+		conn.setDriver(pros.getProperty("driver"));
+		conn.setPoPackage(pros.getProperty("poPackage"));
+		conn.setPwd(pros.getProperty("pwd"));
+		conn.setSrcPath(pros.getProperty("srcPath"));
+		conn.setUrl(pros.getProperty("url"));
+		conn.setUser(pros.getProperty("user"));
+		conn.setUsingDB(pros.getProperty("usingDB"));
+		conn.setUsingDB(pros.getProperty("srcPath"));
+		conn.setUsingDB(pros.getProperty("queryClass"));
+		conn.setUsingDB(pros.getProperty("poolMinSize"));
+		conn.setUsingDB(pros.getProperty("poolMaxSize"));
+		
+	}
+
+	
+	/**
+	 * 获取Connection对象
+	 * @return
+	 */
+	public static Connection getConnection() {
+		try {
+			// 加载驱动
+			Class.forName(conn.getDriver());
+			
+			// 建立连接
+			return DriverManager.getConnection(conn.getUrl(),
+					conn.getUser(), conn.getPwd()); // 目前先直接建立连接，后期会增加连接池功能
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		} 
+	}
+	
+	/**
+	 * 释放资源
+	 * @param ps
+	 * @param conn
+	 * @param rs
+	 */
+	public static void close(Statement ps, Connection conn, ResultSet rs) {
+		try {
+			if (ps != null) {
+				ps.close();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		try {
+			if (conn != null) {
+				conn.close();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		try {
+			if (rs != null) {
+				rs.close();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * 释放资源
+	 * @param ps
+	 * @param conn
+	 */
+	public static void close(Statement ps, Connection conn) {
+		try {
+			if (ps != null) {
+				ps.close();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		try {
+			if (conn != null) {
+				conn.close();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * 获取Configuration对象
+	 * @return
+	 */
+	public static Configuration getConf() {
+		return conn;
+	}
+	
+	
+}

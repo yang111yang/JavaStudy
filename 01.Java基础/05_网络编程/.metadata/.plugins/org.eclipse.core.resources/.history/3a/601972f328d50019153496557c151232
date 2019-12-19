@@ -1,0 +1,116 @@
+package com.net.chat2;
+
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.concurrent.CopyOnWriteArrayList;
+
+/**
+ * @version:1.0
+ * @Description:聊天室：服务端
+ * 	加入容器实现群聊
+ * @author:刘建阳
+ * @date:2019年9月9日下午8:04:46
+ */
+public class Chat {
+	// CopyOnWriteArrayList,可以避免并发错误
+	private static CopyOnWriteArrayList<Channel> all = new CopyOnWriteArrayList<Channel>(); 
+
+	public static void main(String[] args) throws Exception {
+		// 1、指定端口 使用ServerSocket创建服务器
+		@SuppressWarnings("resource")
+		ServerSocket server = new ServerSocket(8888);
+		while (true) {
+			// 2、阻塞式等待连接 accept
+			Socket client = server.accept();
+			System.out.println("一个客户端建立了连接。。。。");
+			Channel c = new Channel(client);
+			all.add(c); // 将管道加入到容器中
+			new Thread(c).start();
+		}
+	}
+	
+	// 一个客户端对应一个Channel
+	static class Channel implements Runnable {
+		
+		private DataInputStream dis;
+		private DataOutputStream dos;
+		private boolean isRunning;
+		private Socket client;
+		private String name;
+		
+		public Channel(Socket client) {
+			this.client = client;
+			isRunning = true;
+			try {
+				dis = new DataInputStream(client.getInputStream());
+				dos = new DataOutputStream(client.getOutputStream());
+				// 获取姓名
+				this.name = receive();
+				send("欢迎回来");
+				sendOthers("欢迎"+this.name+"来到了聊天室", true);
+			} catch (IOException e) {
+				System.out.println("----1----");
+				this.release();
+			}
+		}
+		
+		// 发送消息
+		public void send (String msg) {
+			try {
+				dos.writeUTF(msg);
+				dos.flush();
+			} catch (IOException e) {
+				System.out.println("----2----");
+				this.release();
+			}
+		}
+		
+		// 发送消息给其他人
+		public void sendOthers (String msg, boolean isSys) {
+			for (Channel c : all) {
+				if (c == this) { // 自己
+					continue;
+				}
+				// 其他人
+				if (!isSys) {
+					c.send(this.name+"对所有人说："+msg);
+				} else {
+					c.send(msg);
+				}
+			}
+		}
+		
+		// 接收消息
+		public String receive() {
+			String msg = "";
+			try {
+				msg = dis.readUTF();
+			} catch (IOException e) {
+				System.out.println("----4----");
+				this.release();
+			}
+			return msg;
+		}
+		// 释放资源
+		public void release() {
+			isRunning = false;
+			ChatUtils.close(dis,dos,client);
+		}
+
+		@Override
+		public void run() {
+			while (isRunning) {
+				// 3、操作: 输入输出流操作
+				// 接收消息
+				String msg = this.receive();
+				// 发送消息
+//				this.send(msg);
+				sendOthers(msg, false);
+			}
+		}
+		
+	}
+}

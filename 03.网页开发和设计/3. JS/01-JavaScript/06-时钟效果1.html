@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>时钟效果</title>
+		<script type="text/javascript">
+			function clock(){
+				var date = new Date();
+				document.getElementById("time").innerHTML=date.toLocaleString();
+				window.setTimeout(clock,1000);
+			}
+			window.onload=clock;
+		</script>
+	</head>
+	<body>
+		<div id="time"></div>
+	</body>
+</html>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
+<web-app>
+  <servlet>
+    <servlet-name>ServletConfigServlet</servlet-name>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <description>This is the description of my J2EE component</description>
+    <servlet-class>com.liu.servlet.ServletConfigServlet</servlet-class>
+    <init-param>
+    	<param-name>code</param-name>
+    	<param-value>utf-8</param-value>
+    </init-param>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>ServletConfigServlet</servlet-name>
+    <url-pattern>/sg</url-pattern>
+  </servlet-mapping>
+
+</web-app>

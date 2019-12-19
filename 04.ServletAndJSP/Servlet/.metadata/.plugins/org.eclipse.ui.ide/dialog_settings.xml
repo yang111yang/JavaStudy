@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="CleanDialogSettings">
+		<item value="500" key="DIALOG_WIDTH"/>
+		<item value="false" key="TOGGLE_SELECTED"/>
+		<item value="417" key="DIALOG_HEIGHT"/>
+		<item value="91" key="DIALOG_Y_ORIGIN"/>
+		<item value="433" key="DIALOG_X_ORIGIN"/>
+	</section>
+	<section name="ExternalProjectImportWizard">
+		<item value="false" key="WizardProjectsImportPage.STORE_NESTED_PROJECTS"/>
+		<item value="false" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
+		<item value="false" key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED"/>
+		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="E:\JavaStudy\01.Java基础\08_JDBC数据库操作"/>
+			<item value="E:\JavaStudy\01.Java基础\07_注解_反射_字节码_类加载机制"/>
+			<item value="E:\JavaStudy\01.Java基础\06_手写服务器webserver"/>
+			<item value="E:\JavaStudy\01.Java基础\05_网络编程"/>
+			<item value="E:\JavaStudy\01.Java基础\04_多线程"/>
+			<item value="E:\JavaStudy\01.Java基础\03_IO"/>
+			<item value="E:\JavaStudy\01.Java基础\01_Basic"/>
+			<item value="E:\JavaStudy\04.ServletAndJSP\Ajax\01-Ajax"/>
+			<item value="E:\JavaStudy\01.Java基础\02_Collections\容器"/>
+			<item value="E:\JavaStudy\01.Java基础\09_手写ORM框架\SORM"/>
+		</list>
+		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
+			<item value=""/>
+		</list>
+	</section>
+</section>

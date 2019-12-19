@@ -1,0 +1,48 @@
+package com.net.chat;
+
+import java.io.BufferedReader;
+import java.io.Closeable;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+/**
+ * 
+ * @Description: 聊天室工具类
+ * @author:liujy
+ * @version:1.0
+ * @date:2019年9月12日上午11:20:47
+ */
+public class ChatUtils {
+	
+	/**
+	 * 释放资源
+	 * @param targets 可变参数
+	 */
+	public static void close(Closeable ... targets) {
+		for (Closeable closeable : targets) {
+			try {
+				if (closeable != null) {
+					closeable.close();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	/**
+	 * 从控制台获取内容
+	 * @return 获取的内容
+	 */
+	public static String getStringFromConsole() {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		String msg = "";
+		try {
+			msg = br.readLine();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return msg;
+	}
+
+}

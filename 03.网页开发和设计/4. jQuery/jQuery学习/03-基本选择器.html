@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/jQuery-1.8.3.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.myClass{
+				background-color: aqua;
+			}
+		</style>
+		<script type="text/javascript">
+			$(function(){
+//				标签选择器 $("a")  
+				//$("h3").addClass("myClass");
+//				ID选择器 $("#id")     $("p#id")
+				//$("#h32").addClass("myClass");
+//				类选择器 $(".class")    $("h2.class")
+				//$(".red1").addClass("myClass");
+				//$("p.red1").addClass("myClass");
+//				通配选择器 $("*")
+				//$("*").addClass("myClass");
+//				并集选择器$("elem1,elem2,elem3")
+				//$("h3,p").addClass("myClass");
+//				后代选择器$(ul li)   
+				//$("p span").addClass("myClass");
+//				父子选择器 $(ul>li)
+				//$("p>span").addClass("myClass");
+//				后面第一个兄弟元素 prev + next
+				//$("h3+p").addClass("myClass");
+//				后面所有的兄弟元素 prev ~ next
+				//$("h3~p").addClass("myClass");
+			});
+		</script>
+	</head>
+	<body>
+		<h3 id="h31">JSP</h3>
+       <p>
+       JSP全名为Java Server Pages，中文名叫java服务器页面，其根本是一个简化的<span>Servlet</span>设计，
+       它[1]  是由Sun Microsystems公司倡导、许多公司参与一起建立的一种动态网页技术标准。
+       JSP技术有点类似ASP技术，它是在传统的网页<em><span>HTML</span></em>（标准通用标记语言的子集）文件(*.htm,*.html)
+       中插入Java程序段(Scriptlet)和JSP标记(tag)，从而形成JSP文件，后缀名为(*.jsp)。 用JSP开发的Web
+       应用是跨平台的，既能在Linux下运行，也能在其他操作系统上运行。
+       </p>
+       
+       <h3 id="h32" class="red1">Servlet</h3>
+       <p>
+       Servlet（Server Applet）是Java Servlet的简称，是为小服务程序或服务连接器，用Java编写的服务器端程序，主要功能在于交互式地浏览和修改数据，生成动态Web内容。
+       </p>
+       <p class="red1">
+       狭义的Servlet是指Java语言实现的一个接口，广义的Servlet是指任何实现了这个Servlet接口的类，一般情况下，人们将Servlet理解为后者。Servlet运行于支持Java的应用服务器中。从原理上讲，Servlet可以响应任何类型的请求，但绝大多数情况下Servlet只用来扩展基于HTTP协议的Web服务器。
+       </p>
+       <div>abc</div>
+       <p class="red1">
+       狭义的Servlet是指Java语言实现的一个接口，广义的Servlet是指任何实现了这个Servlet接口的类，一般情况下，人们将Servlet理解为后者。Servlet运行于支持Java的应用服务器中。从原理上讲，Servlet可以响应任何类型的请求，但绝大多数情况下Servlet只用来扩展基于HTTP协议的Web服务器。
+       </p>
+	</body>
+	</body>
+</html>

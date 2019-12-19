@@ -1,0 +1,18 @@
+package com.net.udp;
+/**
+ * 	基本流程: 发送端
+ * 1、使用DatagramSocket  指定端口 创建发送端
+ * 2、准备数据 一定转成字节数组
+ * 3、封装成DatagramPacket 包裹，需要指定目的地
+ * 4、  发送包裹send​(DatagramPacket p) * 
+ * 5、释放资源 
+ * @author 刘建阳
+ *
+ */
+public class UDPClient {
+
+	public static void main(String[] args) {
+		
+	}
+
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>数组</title>
+		<script type="text/javascript">
+			document.write("<h3>一维数组1</h3>");
+//			var fruits = ["apple","banana","orange","pear","peach"];
+//			blywsz(fruits);
+			
+			document.write("<h3>一维数组2</h3>");
+//			var fruits = new Array("apple","banana","orange","pear","peach");
+//			blywsz(fruits);
+			
+			document.write("<h3>一维数组3</h3>");
+//			var fruits = new Array();
+//			fruits[0] = "apple";
+//			fruits[1] = "banana";
+//			fruits[2] = "orange";
+//			fruits[3] = "pear";
+//			fruits[4] = "peach";
+//			blywsz(fruits);
+			
+			document.write("<h3>一维数组4</h3>");
+			var fruits = new Array();
+			fruits["apple"] = "苹果";
+			fruits["banana"] = "香蕉";
+			fruits["orange"] = "橘子";
+			fruits["pear"] = "梨子";
+			fruits["peach"] = "桃子";
+			blywsz(fruits);
+			
+			document.write("<h3>二维数组1</h3>");
+			var arr = new Array();
+			arr[0] = ["拱墅区","江干区","萧山区","滨江区","西湖区"];
+			arr[1] = ["郑州","驻马店","南阳","信阳","安阳"];
+			arr[2] = ["杭州","绍兴","宁波","舟山","义务","嘉兴"];
+			blewsz(arr);
+			
+			document.write("<h3>二维数组2</h3>");
+			var arr = new Array();
+			arr["杭州市"] = ["拱墅区","江干区","萧山区","滨江区","西湖区"];
+			arr["河南省"] = ["郑州","驻马店","南阳","信阳","安阳"];
+			arr["浙江省"] = ["杭州","绍兴","宁波","舟山","义务","嘉兴"];
+			blewsz(arr);
+			
+			function blywsz(fruits){
+				for(var index in fruits){
+					document.write(index+" "+fruits[index]+"<br/>")
+				}
+			}
+			
+			function blewsz(arr){
+				for(i in arr){
+				document.write("<h4>"+i+"</h4>");
+				for(j in arr[i]){
+					document.write(arr[i][j]+"&nbsp;&nbsp;&nbsp;");
+				}
+				
+			}
+			}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

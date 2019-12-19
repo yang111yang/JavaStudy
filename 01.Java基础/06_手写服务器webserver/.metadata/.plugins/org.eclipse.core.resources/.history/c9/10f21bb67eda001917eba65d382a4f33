@@ -1,0 +1,70 @@
+package com.liu.server;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.Socket;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+/**
+ * 请求信息
+ * @author liujy
+ *
+ */
+public class Request {
+	
+	private final String CRLF = "\r\n";
+	private Map<String, List<String>> paraMap = new HashMap<String, List<String>>();
+	private String reqMethod;
+	private String reqUrl;
+	private String reqPara;
+	
+	public Request(Socket client) throws IOException {
+		this(client.getInputStream());
+	}
+	
+	public Request(InputStream is) {
+		byte[] flush = new byte[1024*1024];
+		String reqInfo = "";
+		try {
+			reqInfo = new String(flush,0,is.read(flush));
+			System.out.println(reqInfo);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		// 解析字符串
+		parseReqInfo(reqInfo);
+	}
+	
+	/** 解析字符串 */
+	private void parseReqInfo(String reqInfo) {
+		reqMethod = reqInfo.substring(0, reqInfo.indexOf("/")).toLowerCase().trim();
+		reqUrl = reqInfo.substring(reqInfo.indexOf("/")+1, reqInfo.indexOf("HTTP/")).trim();
+		int queryIdx = reqInfo.indexOf("?");
+		if (queryIdx > 0) {
+			String[] reqStr = reqUrl.split("\\?");
+			reqUrl = reqStr[0];
+			reqPara = reqStr[1];
+		}
+		
+		if (reqMethod.equals("post")) {
+			String paraStr = reqInfo.substring(reqInfo.lastIndexOf(CRLF)).trim();
+			if (reqPara == null) {
+				reqPara = paraStr;
+			} else {
+				reqPara += "&" + paraStr;
+			}
+		}
+		
+		// 将参数转为Map
+		convertParaToMap();
+	}
+	
+	private void convertParaToMap() {
+		String[] split = reqPara.split("\\&");
+		System.out.println(split);
+	}
+
+}

@@ -1,0 +1,19 @@
+package com.liu.dynamiccomplie;
+
+import javax.tools.JavaCompiler;
+import javax.tools.ToolProvider;
+
+/**
+ * ∂ØÃ¨±‡“Î
+ * @author liujy
+ *
+ */
+public class Demo01 {
+	
+	public static void main(String[] args) {
+		JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
+		int result = compiler.run(null, null, null, "e:/myjava/HelloWorld.java");
+		System.out.println(result == 0?"±‡“Î≥…π¶":"±‡“Î ß∞‹");
+	}
+
+}

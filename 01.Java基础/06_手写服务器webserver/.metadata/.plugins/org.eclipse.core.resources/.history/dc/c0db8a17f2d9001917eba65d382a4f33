@@ -1,0 +1,61 @@
+package com.liu.server;
+
+import java.io.IOException;
+import java.net.Socket;
+
+/**
+ * 目标：加入404/500和首页
+ * @author liujy
+ *
+ */
+public class Dispatcher implements Runnable {
+	
+	private Socket client;
+	private Request request;
+	private Response response;
+	
+	public Dispatcher(Socket client) {
+		this.client = client;
+		try {
+			request = new Request(client);
+			response = new Response(client);
+		} catch (IOException e) {
+			e.printStackTrace();
+			release();
+		}
+	}
+
+	@Override
+	public void run() {
+			try {
+				if (request.getRequestUrl() == null || request.getRequestUrl() == "") {
+					Thread.currentThread().getContextClassLoader().getResource("index.html");
+					response.push(200);
+				}
+				Servlet servlet = WebApp.getServletFromUrl(request.getRequestUrl());
+				if (servlet != null) {
+					servlet.service(request, response);
+					response.push(200);
+				} else {
+					response.push(404);
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+				try {
+					response.print("服务器错误");
+					response.push(500);
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+			}
+			release();
+	}
+
+	public void release() {
+		try {
+			client.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+}

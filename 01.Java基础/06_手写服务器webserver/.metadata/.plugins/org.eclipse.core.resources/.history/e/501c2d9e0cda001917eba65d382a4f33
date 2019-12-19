@@ -1,0 +1,14 @@
+package com.liu.user;
+
+import com.liu.server.core.Request;
+import com.liu.server.core.Response;
+import com.liu.server.core.Servlet;
+
+public class OthersServlet implements Servlet {
+
+	@Override
+	public void service(Request request, Response response) {
+		response.print("其他页面");
+	}
+
+}

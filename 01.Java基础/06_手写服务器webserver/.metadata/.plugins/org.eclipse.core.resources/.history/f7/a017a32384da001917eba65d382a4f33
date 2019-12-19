@@ -1,0 +1,22 @@
+package com.liu.server;
+
+import java.io.IOException;
+import java.io.OutputStream;
+import java.net.Socket;
+
+/**
+ * 响应信息
+ * @author liujy
+ *
+ */
+public class Response {
+	
+	public Response(Socket client) throws IOException {
+		this(client.getOutputStream());
+	}
+	
+	public Response(OutputStream os) {
+		
+	}
+	
+}

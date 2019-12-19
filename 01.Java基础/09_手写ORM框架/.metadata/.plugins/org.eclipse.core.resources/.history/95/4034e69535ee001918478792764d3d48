@@ -1,0 +1,51 @@
+package com.liu.sorm.core;
+
+import java.lang.reflect.Field;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.Test;
+
+import com.liu.po.Emp;
+import com.liu.sorm.bean.TableInfo;
+import com.liu.sorm.pool.DBConnPool;
+import com.liu.sorm.utils.JDBCUtils;
+import com.liu.sorm.utils.ReflectUtils;
+import com.liu.vo.EmpVO;
+
+public class MysqlQuery extends Query {
+	@Test
+	public void testDML() {
+		long start = System.currentTimeMillis();
+		for (int i = 0; i < 1000; i++) {
+			DBManager.getConnection();
+		}
+		long end = System.currentTimeMillis();
+		System.out.println(end-start);
+//		new MysqlQuery().delete(emp);
+	}
+
+	@Test
+	public void testQueryRows() {
+		String sql = "select e.id,e.empname,e.age,salary+bonus xinshui,d.deptname,d.address FROM emp e\r\n" + 
+				"join dept d WHERE e.deptId=d.id";
+		List<EmpVO> list = new MysqlQuery().queryRows(sql, EmpVO.class, null);
+		for (EmpVO empVO : list) {
+			System.out.println(empVO.getEmpname()+"-->"+empVO.getAge()+"-->"+empVO.getDeptname()+"-->"+empVO.getAddress());
+		}
+	}
+	
+	@Test
+	public void testQueryValue() {
+		String sql = "select count(*) from emp where salary>?";
+		Number count = new MysqlQuery().queryNumber(sql, new Object[] {1000});
+		System.out.println(count);
+	}
+
+
+}

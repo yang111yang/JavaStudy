@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>用户注册</title>
+	</head>
+	<body>
+		<form method="post" action="http://localhost:8888/reg.html">
+			用 户 名：<input type="text" name="uname" id="uname"/><br/>
+			爱好：
+			<input type="checkbox" name="fav" id="0"/>乒乓球
+			<input type="checkbox" name="fav" id="1"/>羽毛球
+			<input type="checkbox" name="fav" id="2"/>网球
+			<input type="submit" value="登录"/>
+		</form>
+	</body>
+</html>

@@ -1,0 +1,11 @@
+package com.net.chat;
+/**
+ * 
+ * @Description:发送端
+ * @author:liujy
+ * @version:1.0
+ * @date:2019年9月12日上午11:36:19
+ */
+public class Send {
+
+}

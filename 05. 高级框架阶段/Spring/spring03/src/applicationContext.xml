@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<bean id="myBefore" class="com.liu.advice.MyAfterAdvice"></bean>
+	<bean id="myAfter" class="com.liu.advice.MyBeforeAdvice"></bean>
+	<bean id="mythrow" class="com.liu.advice.MyThrowAdvice"></bean>
+	<bean id="mythrow1" class="com.liu.advice.MyThrow"></bean>
+	<bean id="myarround" class="com.liu.advice.MyArround"></bean>
+
+	<aop:config>
+		<aop:pointcut expression="execution(* com.liu.test.Demo.demo1())" id="mypoint"/>
+		<!-- <aop:advisor advice-ref="myBefore" pointcut-ref="mypoint"/>
+		<aop:advisor advice-ref="myAfter" pointcut-ref="mypoint"/>
+		<aop:advisor advice-ref="mythrow1" pointcut-ref="mypoint"/> -->
+		<aop:advisor advice-ref="myarround" pointcut-ref="mypoint"/>
+		<!-- <aop:aspect ref="mythrow">
+			<aop:pointcut expression="execution(* com.liu.test.Demo.*(..))" id="mypoint"/>
+			<aop:after-throwing method="myexception" pointcut-ref="mypoint" throwing="e1"/>
+		</aop:aspect> -->
+	</aop:config>
+        
+    <bean id="demo" class="com.liu.test.Demo"></bean>    
+</beans>

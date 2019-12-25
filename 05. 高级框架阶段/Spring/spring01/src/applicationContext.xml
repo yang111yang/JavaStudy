@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- Spring创建对象的三种方式 -->
+	<!-- 通过构造方法创建对象 -->
+	<!-- <bean id="peo" class="com.liu.pojo.People">
+		<constructor-arg index="0" name="id" type="int" value="123"></constructor-arg>
+		<constructor-arg index="1" name="name" type="java.lang.String" value="张三"></constructor-arg>
+		<constructor-arg index="2" name="age" type="int" value="22"></constructor-arg>
+	</bean>  -->
+	<!-- 通过实例工厂创建对象 -->
+	<!-- <bean id="factory" class="com.liu.pojo.PeopleFactory"></bean>
+	<bean id="peo1" factory-bean="factory" factory-method="newInstance"></bean> -->
+	<!-- 通过静态工厂创建对象 -->
+	<!-- <bean id="peo2" class="com.liu.pojo.PeopleFactory" factory-method="newInstance"></bean> -->
+	
+	<!-- 给bean的属性赋值 -->
+	<bean id="peo" class="com.liu.pojo.People">
+		<!-- <property name="id" value="2"></property>
+		<property name="name" value="张三"></property>
+		<property name="age" value="22"></property> -->
+		<property name="id">
+			<value>2</value>
+		</property>
+		<property name="name">
+			<value>张三</value>
+		</property>
+		<property name="age">
+			<value>22</value>
+		</property>
+	</bean>
+	
+	<bean id="peo1" class="com.liu.pojo.People">
+		<!-- <property name="id" value="2"></property>
+		<property name="name" value="张三"></property>
+		<property name="age" value="22"></property> -->
+		<property name="id">
+			<value>2</value>
+		</property>
+		<property name="name">
+			<value>张三</value>
+		</property>
+		<property name="age">
+			<value>22</value>
+		</property>
+		<property name="sets">
+			<set>
+				<value>1</value>
+				<value>2</value>
+				<value>3</value>
+				<value>4</value>
+			</set>
+		</property>
+	</bean>
+	
+	<bean id="peo2" class="com.liu.pojo.People">
+		<!-- <property name="id" value="2"></property>
+		<property name="name" value="张三"></property>
+		<property name="age" value="22"></property> -->
+		<property name="id">
+			<value>2</value>
+		</property>
+		<property name="name">
+			<value>张三</value>
+		</property>
+		<property name="age">
+			<value>22</value>
+		</property>
+		<property name="sets">
+			<set>
+				<value>1</value>
+				<value>2</value>
+				<value>3</value>
+				<value>4</value>
+			</set>
+		</property>
+		<property name="list">
+			<list>
+				<value>1</value>
+				<value>2</value>
+				<value>3</value>
+				<value>4</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="peo3" class="com.liu.pojo.People">
+		<!-- <property name="id" value="2"></property>
+		<property name="name" value="张三"></property>
+		<property name="age" value="22"></property> -->
+		<property name="id">
+			<value>2</value>
+		</property>
+		<property name="name">
+			<value>张三</value>
+		</property>
+		<property name="age">
+			<value>22</value>
+		</property>
+		<property name="sets">
+			<set>
+				<value>1</value>
+				<value>2</value>
+				<value>3</value>
+				<value>4</value>
+			</set>
+		</property>
+		<property name="list" value="1">
+		</property>
+	</bean>
+	
+	<bean id="peo4" class="com.liu.pojo.People">
+		<property name="strs">
+			<array>
+				<value>1</value>
+				<value>2</value>
+				<value>3</value>
+				<value>4</value>
+			</array>
+		</property>
+	</bean>
+	
+	<bean id="peo5" class="com.liu.pojo.People">
+		<property name="map">
+			<map>
+				<entry key="a" value="b"></entry>
+				<entry key="c" value="d"></entry>
+			</map>
+		</property>
+	</bean>
+	
+	<bean id="peo6" class="com.liu.pojo.People">
+		<property name="props">
+			<props>
+				<prop key="key">value</prop>
+				<prop key="key1">value1</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="peo7" class="com.liu.pojo.People">
+		<property name="desk" ref="desk"></property>
+	</bean>
+	<bean id="desk" class="com.liu.pojo.Desk">
+		<property name="id" value="1"></property>
+		<property name="price" value="200.00"></property>
+	</bean>
+</beans>
